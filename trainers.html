@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Trainers</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Cowboy Iron Gym</h1>
+    <img src="https://via.placeholder.com/300x300" alt="Image 1">
+    
+</header>
+
+<!-- Navigation Bar -->
+<nav>
+    <div class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="memberships.html">Memberships</a></li>
+            <li class="active"><a href="trainers.html">Trainers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="images.html">Images</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Content Container -->
+<div class="content-container">
+    <!-- Rectangular boxes with information and images -->
+    <div class="box-container">
+        <div class="box">
+            <img src="https://via.placeholder.com/300x300" alt="Image 1">
+            <h2>Blake Wallace</h2>
+            <p>Certified Personal Trainer/BodyBuilding Coach</p>
+        </div>
+        <div class="box">  
+            <img src="https://via.placeholder.com/300x300" alt="Image 2">
+            <h2>Box 2</h2>
+            <p>This is some information about Box 2.</p>
+        </div>
+        <div class="box">
+            <img src="https://via.placeholder.com/300x300" alt="Image 3">
+            <h2>Box 3</h2>
+            <p>This is some information about Box 3.</p>
+        </div>
+        <div class="box">
+            <img src="https://via.placeholder.com/300x300" alt="Image 4">
+            <h2>Box 4</h2>
+            <p>This is some information about Box 4.</p>
+        </div>
+    </div>
+
+    <!-- Your provided code -->
+    <div class="box-container">
+        <div class="box">
+            <img src="https://via.placeholder.com/300x300" alt="Image 1">
+            <h2>Additional Box 1</h2>
+            <p>This is some information about Additional Box 1.</p>
+        </div>
+        <div class="box">
+            <img src="https://via.placeholder.com/300x300" alt="Image 2">
+            <h2>Additional Box 2</h2>
+            <p>This is some information about Additional Box 2.</p>
+        </div>
+        <div class="box">
+            <img src="https://via.placeholder.com/300x300" alt="Image 3">
+            <h2>Additional Box 3</h2>
+            <p>This is some information about Additional Box 3.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        var navList = document.querySelector('.nav-list');
+        navList.classList.toggle('nav-list-visible');
+    }
+</script>
+
+
+
+<script>
+    function toggleMenu() {
+        var navList = document.querySelector('.nav-list');
+        navList.classList.toggle('nav-list-visible');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cowboy Iron Gym</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Enable scrolling */
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, #ff0000, #000000);
+            background-size: 200% 100%;
+            animation: gradientAnimation 10s ease infinite alternate;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+       
+
+        /* Additional Styles for Evenly Spaced Boxes */
+        .content-container {
+            display: flex;
+            justify-content: space-evenly; /* Updated to space-evenly */
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* Adjusted Box Styles */
+        .box {
+            width: 300px;
+            height: 200px;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Cowboy Iron Gym</h1>
+        <img src="Banner.JPG" alt="Image 1" style="width: 100px; height: 150px; object-fit: cover;">
+
+     
+   
+    </header>
+    
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar">
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-list">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="memberships.html">Memberships</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="images.html">Images</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="content-container">
+        <!-- Container for Hours of Operation boxes -->
+        <div class="hours-container">
+            <!-- Rectangular boxes with information -->
+            <div class="box">
+                <h2>Hours of Operation</h2>
+                <p>Monday to Sunday: 5am - 9pm</p>
+                <p>24/7 Memberships Available</p>
+            </div>
+            <div class="box">
+                <h2>Hours of Operation</h2>
+                <p>Monday to Sunday: 5am - 9pm</p>
+                <p>24/7 Memberships Available</p>
+            </div>
+            <div class="box">
+                <h2>Hours of Operation</h2>
+                <p>Monday to Sunday: 5am - 9pm</p>
+                <p>24/7 Memberships Available</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleMenu() {
+            var navList = document.querySelector('.nav-list');
+            navList.classList.toggle('nav-list-visible');
+        }
+    </script>
+
+<footer>
+   
+    <div>
+       
+        <video width="550px" height="1000px" controls autoplay style="border-radius: 15px;">
+            <source src="open.mov" type="video/mp4">
+        </video>
+        
+        
+    </div>
+ 
+</footer>
+
+</body>
+</html>

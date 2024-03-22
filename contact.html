@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Contact</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Cowboy Iron Gym</h1>
+</header>
+
+<!-- Navigation Bar -->
+<nav>
+    <div class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="memberships.html">Memberships</a></li>
+            <li><a href="trainers.html">Trainers</a></li>
+            <li class="active"><a href="contact.html">Contact</a></li>
+            <li><a href="images.html">Images</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Content Container -->
+<div class="content-container">
+    <!-- Your content goes here -->
+</div>
+
+<script>
+    function toggleMenu() {
+        var navList = document.querySelector('.nav-list');
+        navList.classList.toggle('nav-list-visible');
+    }
+</script>
+
+</body>
+</html>

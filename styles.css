@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Enable scrolling */
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #ff0000, #000000);
+    background-size: 200% 100%;
+    animation: gradientAnimation 3s linear infinite alternate;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #000;
+    color: #ff0000; /* Red color */
+    font-family: 'Courier New', Courier, monospace
+    
+}
+
+h1 {
+    font-size: 4em;
+    position: relative;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+nav {
+    font-family: Arial, sans-serif;
+    background-color: #333; /* Dark background color for the navbar */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Add space between the menu toggle and the nav-list */
+    align-items: center;
+    padding: 10px; /* Add some padding for better aesthetics */
+}
+
+.menu-toggle {
+    cursor: pointer;
+    display: none;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-size: 1.2em;
+}
+
+.nav-list li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.nav-list a {
+    color: #fff; /* Set text color to white */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Add a smooth transition for color change */
+}
+
+.nav-list li.active::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ff0000; /* Red color */
+}
+
+.nav-list a:hover {
+    color: #ff0000; /* Change text color on hover to red */
+}
+
+/* Container for rectangular boxes */
+.box-container {
+    display: flex;
+    justify-content: space-around; /* Evenly space the boxes */
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+/* Rectangular boxes with shadows */
+.box {
+    width: 300px; /* Adjust the width of the boxes */
+    height: 200px; /* Adjust the height of the boxes */
+    padding: 25px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center; /* Center text */
+}
+
+/* Square image with rounded corners */
+.box img {
+    border-radius: 15px 15px 0 0; /* Apply rounded corners to the top */
+    width: 100%; /* Make the image fill the container */
+    height: 100px; /* Adjust the height of the image */
+    object-fit: cover; /* Maintain aspect ratio and cover the box */
+}
+
+/* Customize the content inside the boxes */
+.box h2 {
+    color: #333;
+}
+
+.box p {
+    color: #666;
+}
+.hours-container {
+    display: flex; /* Make it a flex container */
+    justify-content: space-evenly; /* Space evenly within the container */
+    width: 100%;
+}
+footer {
+    display: flex; /* Make it a flex container */
+    justify-content: space-evenly; /* Space evenly within the container */
+    width: 100%;
+}
+.vid{
+    scale: 100%;
+}
+
