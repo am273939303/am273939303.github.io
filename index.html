@@ -9,7 +9,6 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: auto; /* Enable scrolling */
             font-family: Arial, sans-serif;
             background: linear-gradient(90deg, #ff0000, #000000);
             background-size: 200% 100%;
@@ -25,12 +24,17 @@
             }
         }
 
-       
+        /* Common styles */
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
         /* Additional Styles for Evenly Spaced Boxes */
         .content-container {
             display: flex;
-            justify-content: space-evenly; /* Updated to space-evenly */
+            justify-content: space-evenly;
             align-items: center;
             flex-wrap: wrap;
             padding: 20px;
@@ -38,8 +42,9 @@
 
         /* Adjusted Box Styles */
         .box {
-            width: 300px;
-            height: 200px;
+            width: calc(100% - 40px);
+            max-width: 300px;
+            height: auto;
             padding: 25px;
             border-radius: 15px;
             background-color: #fff;
@@ -47,28 +52,38 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        .vid {
-            margin-right: 100px;
 
-        }
+        .vid,
         .pic {
-            size:10%;
+            width: calc(50% - 20px);
+            max-width: 550px;
+            margin-bottom: 20px;
+        }
+
+        /* Media queries */
+        @media (min-width: 768px) {
+            .box {
+                width: calc(33.33% - 40px);
+                max-width: none;
+            }
+
+            .vid,
+            .pic {
+                width: calc(50% - 20px);
+                max-width: none;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- Header -->
-    <header>
+    <header class="container">
         <h1>Cowboy Iron Gym</h1>
-      
-
-     
-   
     </header>
-    
+
     <!-- Navigation Bar -->
-    <nav>
+    <nav class="container">
         <div class="navbar">
             <div class="menu-toggle" onclick="toggleMenu()">
                 <div class="bar"></div>
@@ -84,11 +99,9 @@
             </ul>
         </div>
     </nav>
-    
-    <div class="content-container">
-        
-        <div class="hours-container">
-            
+
+    <div class="container">
+        <div class="content-container">
             <div class="box">
                 <h2>Hours of Operation</h2>
                 <p>Desk Hours: Monday to Sunday: 5am - 9pm</p>
@@ -97,41 +110,35 @@
             <div class="box">
                 <h2>Welcome</h2>
                 <p>Day Pass: $20 with Tax</p>
-                  <p>Week Pas: $30 with Tax</p>
-                   <p>2 Week Pass: $40 with Tax</p>
-                
-                <p>24/7 Memberships Available with a 7.99 addition </p>
+                <p>Week Pass: $30 with Tax</p>
+                <p>2 Week Pass: $40 with Tax</p>
+                <p>24/7 Memberships Available with a 7.99 addition</p>
             </div>
             <div class="box">
-                <h2>Supplements and Ready to drink DRINKS avalible</h2>
-                <p>Protein drinks, pre-workout, and energy drinks availible</p>
+                <h2>Supplements and Ready to drink DRINKS available</h2>
+                <p>Protein drinks, pre-workout, and energy drinks available</p>
                 <p>24/7 Memberships Available</p>
             </div>
         </div>
     </div>
-    
+
+    <footer class="container">
+        <div class="vid">
+            <video width="100%" height="auto" controls autoplay style="border-radius: 25px;">
+                <source src="open.mov" type="video/mp4">
+            </video>
+        </div>
+        <div class="pic">
+            <img src="Images/tredmills.jpg" width="100%" height="auto" style="border-radius: 50px;" alt="Image 1">
+        </div>
+    </footer>
+
     <script>
         function toggleMenu() {
             var navList = document.querySelector('.nav-list');
             navList.classList.toggle('nav-list-visible');
         }
     </script>
-
-<footer>
-   
-    <div class="vid">
-       
-        <video width="550px" height="1000px" controls autoplay style="border-radius: 25px;">
-            <source src="open.mov" type="video/mp4">
-        </video>
-        
-        
-    </div>
-    <div class="pic">
-        <img src="Images/tredmills.jpg" width="1000" height="1000" style="border-radius: 50px;" alt="Image 1">
-    </div>
- 
-</footer>
 
 </body>
 </html>
