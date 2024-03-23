@@ -1,8 +1,0 @@
- <iframe
-        width="1000"
-        height="500"
-        frameborder="0"
-        style="border:0; border-radius: 15px;"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCMor7A3VXn6ezc8kdjXmkGE7pphz3uFsI&q=3330 E Historic Hwy 66, Gallup, NM 87301"
-        allowfullscreen
-    ></iframe>
