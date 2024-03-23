@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <title>Images</title>
     <style>
-          body {
+        body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
         }
 
         .carousel-container {
+            position: relative;
             width: 80%;
             margin: 50px auto;
             overflow: hidden;
@@ -75,23 +76,27 @@
                 <li><a href="memberships.html">Memberships</a></li>
                 <li><a href="trainers.html">Trainers</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li  class="active"><a href="images.html">Images</a></li>
+                <li class="active"><a href="images.html">Images</a></li>
             </ul>
         </div>
     </nav>
-   
+
     <div class="carousel-container">
         <div class="carousel">
             <!-- Blank Images (Replace with actual URLs later) -->
-            <img src="https://via.placeholder.com/800x400" alt="Image 1">
-            <img src="https://via.placeholder.com/800x400" alt="Image 2">
-            <img src="https://via.placeholder.com/800x400" alt="Image 3">
-            <img src="https://via.placeholder.com/800x400" alt="Image 4">
-            <img src="https://via.placeholder.com/800x400" alt="Image 5">
-            <img src="https://via.placeholder.com/800x400" alt="Image 6">
-            <img src="https://via.placeholder.com/800x400" alt="Image 7">
-            <img src="https://via.placeholder.com/800x400" alt="Image 8">
-            <!-- Add more images as needed -->
+            <img src="Images/GO.JPG" alt="Image 1">
+            
+            <img src="Images/TC.JPG" alt="Image 3">
+            <img src="Images/C.jpeg" alt="Image 4">
+            <img src="Images/D.jpg" alt="Image 5">
+            <img src="Images/F.JPG" alt="Image 6">
+            <img src="Images/GYM.jpg" alt="Image 7">
+            <img src="Images/GYM1.jpg" alt="Image 8">
+            <img src="Images/logo1.JPG" alt="Image 9">
+            <img src="Images/TC.JPG" alt="Image 10">
+            <img src="Images/TC1.jpeg" alt="Image 11">
+            <img src="Images/TC1.JPG" alt="Image 12">
+            
         </div>
         <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
         <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
@@ -101,30 +106,28 @@
         let currentIndex = 0;
         const slides = document.querySelectorAll('.carousel img');
         const totalSlides = slides.length;
+        let autoplayInterval;
 
         function showSlide(index) {
             if (index < 0) {
-                currentIndex = totalSlides - 4;
-            } else if (index >= totalSlides - 3) {
+                currentIndex = totalSlides - 8;
+            } else if (index >= totalSlides - 7) {
                 currentIndex = 0;
             } else {
                 currentIndex = index;
             }
 
-            const translateValue = -currentIndex * 50 + '%';
+            const translateValue = -currentIndex * 25 + '%';
             document.querySelector('.carousel').style.transform = 'translateX(' + translateValue + ')';
         }
 
         function nextSlide() {
-            showSlide(currentIndex + 4);
+            showSlide(currentIndex + 8);
+            clearInterval(autoplayInterval);
         }
 
         function prevSlide() {
-            showSlide(currentIndex - 4);
+            showSlide(currentIndex - 8);
+            clearInterval(autoplayInterval);
         }
-    </script>
-</body>
 
-</body>
-
-</html>

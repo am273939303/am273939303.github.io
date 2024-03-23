@@ -95,20 +95,21 @@ nav {
 /* Rectangular boxes with shadows */
 .box {
     width: 300px; /* Adjust the width of the boxes */
-    height: 200px; /* Adjust the height of the boxes */
+    height: 550px; /* Adjust the height of the boxes */
     padding: 25px;
     border-radius: 15px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     text-align: center; /* Center text */
+    font-style: bold;
 }
 
 /* Square image with rounded corners */
 .box img {
     border-radius: 15px 15px 0 0; /* Apply rounded corners to the top */
     width: 100%; /* Make the image fill the container */
-    height: 100px; /* Adjust the height of the image */
+    height: 300px; /* Adjust the height of the image */
     object-fit: cover; /* Maintain aspect ratio and cover the box */
 }
 
@@ -133,4 +134,6 @@ footer {
 .vid{
     scale: 100%;
 }
+
+
 
