@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchandise - Cowboy Iron Gym</title>
+</head>
+<body>
+    <div id='collection-component-1716570909625'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'c2b9a3-fe.myshopify.com',
+      storefrontAccessToken: '7a8496736fa6c4f126ce2f4df3435c41',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('collection', {
+        id: '476047606075',
+        node: document.getElementById('collection-component-1716570909625'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "calc(25% - 20px)",
+          "margin-left": "20px",
+          "margin-bottom": "50px",
+          "width": "calc(25% - 20px)"
+        },
+        "img": {
+          "height": "calc(100% - 15px)",
+          "position": "absolute",
+          "left": "0",
+          "right": "0",
+          "top": "0"
+        },
+        "imgWrapper": {
+          "padding-top": "calc(75% + 15px)",
+          "position": "relative",
+          "height": "0"
+        }
+      },
+      "button": {
+        "font-weight": "bold",
+        "border-radius": "19px",
+        "padding-left": "35px",
+        "padding-right": "35px"
+      }
+    },
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "font-weight": "bold",
+        "border-radius": "19px",
+        "padding-left": "35px",
+        "padding-right": "35px"
+      }
+    },
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "option": {},
+  "cart": {
+    "styles": {
+      "button": {
+        "font-weight": "bold",
+        "border-radius": "19px"
+      },
+      "title": {
+        "color": "#2e2626"
+      },
+      "header": {
+        "color": "#2e2626"
+      },
+      "lineItems": {
+        "color": "#2e2626"
+      },
+      "subtotalText": {
+        "color": "#2e2626"
+      },
+      "subtotal": {
+        "color": "#2e2626"
+      },
+      "notice": {
+        "color": "#2e2626"
+      },
+      "currency": {
+        "color": "#2e2626"
+      },
+      "close": {
+        "color": "#2e2626",
+        ":hover": {
+          "color": "#2e2626"
+        }
+      },
+      "empty": {
+        "color": "#2e2626"
+      },
+      "noteDescription": {
+        "color": "#2e2626"
+      },
+      "discountText": {
+        "color": "#2e2626"
+      },
+      "discountIcon": {
+        "fill": "#2e2626"
+      },
+      "discountAmount": {
+        "color": "#2e2626"
+      },
+      "cart": {
+        "background-color": "#e6dede"
+      },
+      "footer": {
+        "background-color": "#e6dede"
+      }
+    },
+    "text": {
+      "total": "Subtotal",
+      "button": "Checkout"
+    },
+    "popup": false
+  },
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "font-weight": "bold"
+      }
+    }
+  },
+  "lineItem": {
+    "styles": {
+      "variantTitle": {
+        "color": "#2e2626"
+      },
+      "title": {
+        "color": "#2e2626"
+      },
+      "price": {
+        "color": "#2e2626"
+      },
+      "fullPrice": {
+        "color": "#2e2626"
+      },
+      "discount": {
+        "color": "#2e2626"
+      },
+      "discountIcon": {
+        "fill": "#2e2626"
+      },
+      "quantity": {
+        "color": "#2e2626"
+      },
+      "quantityIncrement": {
+        "color": "#2e2626",
+        "border-color": "#2e2626"
+      },
+      "quantityDecrement": {
+        "color": "#2e2626",
+        "border-color": "#2e2626"
+      },
+      "quantityInput": {
+        "color": "#2e2626",
+        "border-color": "#2e2626"
+      }
+    }
+  }
+},
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
+    
+</body>
+</html>

@@ -167,52 +167,6 @@
                 align-items: center;
             }
         }
-        .carousel-container {
-    position: relative;
-    width: 80%;
-    margin: 50px auto;
-    overflow: hidden;
-}
-
-.carousel {
-    display: flex;
-    flex-wrap: wrap; /* Display images in a 2x2 grid */
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel img {
-    width: 50%; /* Display 2 images per row */
-    height: auto;
-}
-
-.carousel-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    outline: none;
-    transition: background-color 0.3s;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
     </style>
 </head>
 <body>
@@ -234,25 +188,41 @@
             <li><a href="merchandise.html">Merchandise</a></li> <!-- New merchandise page link -->
         </ul>
     </nav>
-    <div >
-        <div class="carousel">
-            <!-- Blank Images (Replace with actual URLs later) -->
-            <img src="Images/GO.JPG" alt="Image 1">
-            
-            <img src="Images/TC.JPG" alt="Image 3">
-            <img src="Images/C.jpeg" alt="Image 4">
-            <img src="Images/D.jpg" alt="Image 5">
-            <img src="Images/F.JPG" alt="Image 6">
-            <img src="Images/GYM.jpg" alt="Image 7">
-            <img src="Images/GYM1.jpg" alt="Image 8">
-            <img src="Images/logo1.JPG" alt="Image 9">
-            <img src="Images/TC.JPG" alt="Image 10">
-            <img src="Images/TC1.jpeg" alt="Image 11">
-            <img src="Images/TC1.JPG" alt="Image 12">
-            
+
+    <div class="container content-container">
+        <div class="content-row">
+            <div class="placeholder-img"></div>
+            <div class="text-container">
+                <p>Put text here</p>
+            </div>
         </div>
-        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+        <div class="content-row">
+            <div class="text-container">
+                <p>Put text here</p>
+            </div>
+            <div class="placeholder-img"></div>
+        </div>
     </div>
+
+    <footer class="container footer">
+        <div class="promo-section">
+            <img src="path/to/your/image.png" alt="Cowboy Iron Gym Merchandise">
+            <div>
+                <h2>Shop the Cowboy Iron Gym Collection</h2>
+                <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
+                <p>Cowboy Iron Gym Merchandise</p>
+                <a href="merchandise.html">Shop Now</a> <!-- Updated link to merchandise page -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle the click event on the shopping cart icon
+        document.querySelector('.shopping-cart').addEventListener('click', function() {
+            window.location.href = 'checkout.html';
+        });
+    </script>
+
+    
 </body>
 </html>
