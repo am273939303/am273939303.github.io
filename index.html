@@ -17,30 +17,17 @@
             width: 100%;
             background-color: #000;
             color: white;
-        }
-
-        .header {
-            padding: 10px 0;
-            text-align: center;
-            font-weight: bolder;
-            font-family: 'Palatino', 'Bakersville';
-            font-size: 1.875rem; /* 30px */
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
         }
 
         .header .logo {
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
             cursor: pointer;
-            width: 100px;
-            height: 100px;
-        }
-
-        .navbar {
-            padding: 10px 0;
-            text-align: center;
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
+            border-radius: 50%; /* Rounded logo */
         }
 
         .navbar ul {
@@ -48,8 +35,7 @@
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            gap: 30px; /* Increased gap */
             flex-wrap: wrap;
         }
 
@@ -57,7 +43,8 @@
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            padding: 5px 10px;
+            font-size: 1.25rem; /* Increased font size */
+            padding: 10px 15px; /* Increased padding */
             transition: background-color 0.3s;
         }
 
@@ -67,22 +54,25 @@
 
         .hero {
             position: relative;
-            background: url('/mnt/data/F6EF8E04-1A1D-49A6-A135-AF2D4021CF9F.jpeg') no-repeat center center/cover;
-            height: 80vh;
+            background: url('/Images/GYM1.jpg') no-repeat center center/cover;
+            min-height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .hero-text {
-            position: absolute;
+            position: relative;
             color: #fff;
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
-            font-size: 1.5rem; /* 24px */
+            font-size: 1.5rem;
             font-weight: bold;
+            margin-top: 20px;
         }
 
         .main-content {
@@ -90,7 +80,7 @@
             color: #000;
             border-radius: 15px;
             max-width: 1200px;
-            margin: -100px auto 20px;
+            margin: 40px auto 20px; /* Adjusted margin */
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -126,7 +116,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.125rem; /* 18px */
+            font-size: 1.125rem;
         }
 
         .checklist-item i {
@@ -195,22 +185,17 @@
             }
 
             .header .logo {
-                width: 60px;
-                height: 60px;
-                left: 10px;
-            }
-
-            .header h1 {
-                font-size: 1.5rem; /* 24px */
-                padding-left: 80px; /* Space for the logo */
+                width: 80px; /* Adjust size for smaller screens */
+                height: 80px;
             }
 
             .hero {
-                height: 60vh;
+                min-height: 60vh;
+                padding: 20px;
             }
 
             .hero-text {
-                font-size: 1.25rem; /* 20px */
+                font-size: 1.25rem;
             }
         }
 
@@ -218,7 +203,7 @@
             background-color: transparent;
             border: none;
             color: white;
-            font-size: 1.5rem; /* 24px */
+            font-size: 1.5rem;
             cursor: pointer;
             position: absolute;
             top: 20px;
@@ -251,7 +236,7 @@
         .close {
             color: #aaa;
             float: right;
-            font-size: 1.75rem; /* 28px */
+            font-size: 1.75rem;
             font-weight: bold;
         }
 
@@ -268,20 +253,18 @@
         <a href="index.html">
             <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
-        <h1>Cowboy Iron Gym</h1>
+        <nav class="navbar">
+            <ul>
+               
+                <li><a href="memberships.html">Memberships</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="images.html">Images</a></li>
+                <li><a href="merchandise.html">Merchandise</a></li>
+            </ul>
+        </nav>
         <button class="clock-button" onclick="toggleModal()">🕒</button>
     </header>
-
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="memberships.html">Memberships</a></li>
-            <li><a href="trainers.html">Trainers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="images.html">Images</a></li>
-            <li><a href="merchandise.html">Merchandise</a></li>
-        </ul>
-    </nav>
 
     <section class="hero">
         <div class="hero-text">

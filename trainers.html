@@ -3,48 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cowboy Iron Gym</title>
-   
+    <title>Cowboy Iron Gym - Trainers</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(90deg, #ff0000, #000000);
-            background-size: 200% 100%;
-            animation: gradientAnimation 10s ease infinite alternate;
+            background-color: #000;
             color: #fff;
         }
 
-       
-    
-
-        .header {
+        .header, .navbar {
             width: 100%;
             background-color: #000;
-            color: #ff0000;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
         }
 
-        .header h1 {
-            margin: 0;
-        }
-
-        .shopping-cart {
-            font-size: 24px;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
+        .header .logo {
             cursor: pointer;
-        }
-
-        .navbar {
-            width: 100%;
-            background-color: #333;
-            padding: 10px 0;
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
+            border-radius: 50%; /* Rounded logo */
         }
 
         .navbar ul {
@@ -52,20 +35,16 @@
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .navbar li {
-            margin: 0;
+            gap: 30px; /* Increased gap */
+            flex-wrap: wrap;
         }
 
         .navbar a {
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
+            font-size: 1.25rem; /* Increased font size */
+            padding: 10px 15px; /* Increased padding */
             transition: background-color 0.3s;
         }
 
@@ -73,44 +52,42 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .container {
-            max-width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .content-container {
+        .box-container {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .content-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            justify-content: space-around; /* Evenly space the boxes */
             align-items: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px;
         }
 
-        .placeholder-img {
-            width: 200px;
-            height: 200px;
-            background-color: rgba(255, 255, 255, 0.2);
+        /* Rectangular boxes with shadows */
+        .box {
+            width: 300px; /* Adjust the width of the boxes */
+            height: 550px; /* Adjust the height of the boxes */
+            padding: 25px;
             border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center; /* Center text */
+            font-style: bold;
         }
 
-        .text-container {
-            flex: 1;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            text-align: center;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* Square image with rounded corners */
+        .box img {
+            border-radius: 15px 15px 0 0; /* Apply rounded corners to the top */
+            width: 100%; /* Make the image fill the container */
+            height: 300px; /* Adjust the height of the image */
+            object-fit: cover; /* Maintain aspect ratio and cover the box */
+        }
+
+        /* Customize the content inside the boxes */
+        .box h2 {
+            color: #333;
+        }
+
+        .box p {
+            color: #666;
         }
 
         .footer {
@@ -118,17 +95,18 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            margin-top: 40px;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
         }
 
         .promo-section {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             text-align: center;
             gap: 20px;
-            margin: 20px 0;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
@@ -142,7 +120,6 @@
         }
 
         .promo-section div {
-            flex: 1;
             text-align: left;
         }
 
@@ -163,69 +140,89 @@
         }
 
         @media (max-width: 768px) {
-            .content-row {
+            .header .logo {
+                width: 80px; /* Adjust size for smaller screens */
+                height: 80px;
+            }
+
+            .navbar ul {
                 flex-direction: column;
                 align-items: center;
             }
+
+            .navbar a {
+                padding: 5px 0;
+            }
         }
-        .box-container {
-    display: flex;
-    justify-content: space-around; /* Evenly space the boxes */
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 20px;
-}
 
-/* Rectangular boxes with shadows */
-.box {
-    width: 300px; /* Adjust the width of the boxes */
-    height: 550px; /* Adjust the height of the boxes */
-    padding: 25px;
-    border-radius: 15px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    text-align: center; /* Center text */
-    font-style: bold;
-}
+        .clock-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
 
-/* Square image with rounded corners */
-.box img {
-    border-radius: 15px 15px 0 0; /* Apply rounded corners to the top */
-    width: 100%; /* Make the image fill the container */
-    height: 300px; /* Adjust the height of the image */
-    object-fit: cover; /* Maintain aspect ratio and cover the box */
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
 
-/* Customize the content inside the boxes */
-.box h2 {
-    color: #333;
-}
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            color: #000;
+        }
 
-.box p {
-    color: #666;
-}
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
     <!-- Header -->
     <header class="header">
-        <h1>Cowboy Iron Gym</h1>
-        
+        <a href="index.html">
+            <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
+        </a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="memberships.html">Memberships</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="images.html">Images</a></li>
+                <li><a href="merchandise.html">Merchandise</a></li>
+            </ul>
+        </nav>
+        <button class="clock-button" onclick="toggleModal()">🕒</button>
     </header>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="memberships.html">Memberships</a></li>
-            <li><a href="trainers.html">Trainers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="images.html">Images</a></li>
-            <li><a href="merchandise.html">Merchandise</a></li> <!-- New merchandise page link -->
-        </ul>
-    </nav>
 
     <div class="content-container">
         <!-- Rectangular boxes with information and images -->
@@ -236,7 +233,7 @@
                 <p>Certified Personal Trainer/BodyBuilding Coach</p>
                 <p>Mobile: 9178857856</p>
             </div>
-            <div class="box">  
+            <div class="box">
                 <img src="Images/logo.jpeg" alt="Image 2">
                 <h2>Joey Guillen</h2>
                 <p>International Sports Sciences Association Certified Personal Trainer</p>
@@ -250,34 +247,48 @@
                 <p>International Sports Sciences Association Certified Personal Trainer</p>
                 <p>Mobile: 5059790373</p>
             </div>
-            <!--
-            <div class="box">
-                <img src="https://via.placeholder.com/300x300" alt="Image 4">
-                <h2>Box 4</h2>
-                <p>This is some information about Box 4.</p>
-            </div>
-        </div>
-    
-         Your provided code 
-        <div class="box-container">
-            <div class="box">
-                <img src="https://via.placeholder.com/300x300" alt="Image 1">
-                <h2>Additional Box 1</h2>
-                <p>This is some information about Additional Box 1.</p>
-                
-            </div>
-            <div class="box">
-                <img src="https://via.placeholder.com/300x300" alt="Image 2">
-                <h2>Additional Box 2</h2>
-                <p>This is some information about Additional Box 2.</p>
-            </div>
-            <div class="box">
-                <img src="https://via.placeholder.com/300x300" alt="Image 3">
-                <h2>Additional Box 3</h2>
-                <p>This is some information about Additional Box 3.</p>
-            </div>
         </div>
     </div>
-    -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="promo-section">
+            <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
+            <div>
+                <h2>Shop the Cowboy Iron Gym Collection</h2>
+                <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
+                <p>Cowboy Iron Gym Merchandise. We only have hats In Stock we will be getting a huge order in</p>
+                <a href="merchandise.html">Shop Now</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleModal()">&times;</span>
+            <h2>Hours of Operation</h2>
+            <p>Monday: 6:00 AM - 8:00 PM</p>
+            <p>Tuesday: 6:00 AM - 8:00 PM</p>
+            <p>Wednesday: 6:00 AM - 8:00 PM</p>
+            <p>Thursday: 6:00 AM - 8:00 PM</p>
+            <p>Friday: 6:00 AM - 8:00 PM</p>
+            <p>Saturday: 6:00 AM - 8:00 PM</p>
+            <p>Sunday: 6:00 AM - 8:00 PM</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = (modal.style.display === "block") ? "none" : "block";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

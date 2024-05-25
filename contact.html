@@ -9,28 +9,25 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background: url('your-background-image.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background-color: #000;
             color: #fff;
         }
 
-        .header {
+        .header, .navbar {
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #ff0000;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
+            background-color: #000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
         }
 
-        .header h1 {
-            margin: 0;
-        }
-
-        .navbar {
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 0;
+        .header .logo {
+            cursor: pointer;
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
+            border-radius: 50%; /* Rounded logo */
         }
 
         .navbar ul {
@@ -38,20 +35,16 @@
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .navbar li {
-            margin: 0;
+            gap: 30px; /* Increased gap */
+            flex-wrap: wrap;
         }
 
         .navbar a {
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
+            font-size: 1.25rem; /* Increased font size */
+            padding: 10px 15px; /* Increased padding */
             transition: background-color 0.3s;
         }
 
@@ -59,44 +52,151 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .footer {
+        .content-container {
             display: flex;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        .promo-section {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            padding: 40px; /* Increased padding */
-            border-radius: 15px; /* Rounded corners */
-            max-width: 90%;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            gap: 20px;
+            padding: 40px;
+            margin: 20px;
+            background-color: transparent; /* Removed grey background */
         }
 
-        .promo-section h2 {
+        .content-container h2 {
             color: #ff0000;
             margin: 0;
             font-size: 32px; /* Larger font size */
         }
 
-        .promo-section p {
-            color: #000;
-            margin: 20px 0; /* Increased margin */
+        .content-container p {
+            color: #fff;
+            margin: 10px 0 0;
             font-size: 20px; /* Larger font size */
         }
 
-        .placeholder-img {
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .promo-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 15px;
+            max-width: 90%;
+        }
+
+        .promo-section img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 15px;
+        }
+
+        .promo-section div {
+            text-align: left;
+        }
+
+        .promo-section h2 {
+            color: #ff0000;
+            margin: 0;
+        }
+
+        .promo-section p {
+            color: #000;
+            margin: 10px 0 0;
+        }
+
+        .promo-section a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header .logo {
+                width: 80px; /* Adjust size for smaller screens */
+                height: 80px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar a {
+                padding: 5px 0;
+            }
+        }
+
+        .clock-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            color: #000;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .background-image {
+            width: 100%;
+            height: auto;
             object-fit: cover;
             position: fixed;
             top: 0;
             left: 0;
-            z-index: -1; /* Ensure the image stays behind other content */
+            z-index: -1;
+            opacity: 0.5; /* Adjust transparency */
         }
     </style>
 </head>
@@ -104,32 +204,60 @@
 
     <!-- Header -->
     <header class="header">
-        <h1>Cowboy Iron Gym</h1>
+        <a href="index.html">
+            <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
+        </a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="memberships.html">Memberships</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="images.html">Images</a></li>
+                <li><a href="merchandise.html">Merchandise</a></li>
+            </ul>
+        </nav>
+        <button class="clock-button" onclick="toggleModal()">🕒</button>
     </header>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="memberships.html">Memberships</a></li>
-            <li><a href="trainers.html">Trainers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="images.html">Images</a></li>
-            <li><a href="merchandise.html">Merchandise</a></li>
-        </ul>
-    </nav>
+    <!-- Contact Section -->
+    <div class="content-container">
+        <h2>Contact</h2>
+        <p>Front Desk: 505-979-7973</p>
+        <p>Email: cowboyirongym@gmail.com</p>
+    </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="promo-section">
-            <h2>Contact</h2>
-            <p>Front Desk: 505-979-7973</p>
-            <p>Email: cowboyirongym@gmail.com</p>
+   
+        <img src="./Images/logo.jpeg" alt="Background Image" class="background-image">
+  
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleModal()">&times;</span>
+            <h2>Hours of Operation</h2>
+            <p>Monday: 6:00 AM - 8:00 PM</p>
+            <p>Tuesday: 6:00 AM - 8:00 PM</p>
+            <p>Wednesday: 6:00 AM - 8:00 PM</p>
+            <p>Thursday: 6:00 AM - 8:00 PM</p>
+            <p>Friday: 6:00 AM - 8:00 PM</p>
+            <p>Saturday: 6:00 AM - 8:00 PM</p>
+            <p>Sunday: 6:00 AM - 8:00 PM</p>
         </div>
-    </footer>
+    </div>
 
-    <!-- Background Image -->
-    <img src="./Images/logo.jpeg" alt="Background Image" class="placeholder-img">
+    <script>
+        function toggleModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = (modal.style.display === "block") ? "none" : "block";
+        }
 
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -9,41 +9,27 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(90deg, #ff0000, #000000);
+            background: linear-gradient(90deg, black, #000000);
             background-size: 200% 100%;
             animation: gradientAnimation 10s ease infinite alternate;
             color: #fff;
         }
 
-       
-    
-
-        .header {
+        .header, .navbar {
             width: 100%;
             background-color: #000;
-            color: #ff0000;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
         }
 
-        .header h1 {
-            margin: 0;
-        }
-
-        .shopping-cart {
-            font-size: 24px;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
+        .header .logo {
             cursor: pointer;
-        }
-
-        .navbar {
-            width: 100%;
-            background-color: #333;
-            padding: 10px 0;
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
+            border-radius: 50%; /* Rounded logo */
         }
 
         .navbar ul {
@@ -51,20 +37,16 @@
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .navbar li {
-            margin: 0;
+            gap: 30px; /* Increased gap */
+            flex-wrap: wrap;
         }
 
         .navbar a {
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
+            font-size: 1.25rem; /* Increased font size */
+            padding: 10px 15px; /* Increased padding */
             transition: background-color 0.3s;
         }
 
@@ -117,6 +99,9 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
             margin-top: 40px;
         }
 
@@ -146,7 +131,7 @@
         }
 
         .promo-section h2 {
-            color: #ff0000;
+            color: black;
             margin: 0;
         }
 
@@ -156,7 +141,7 @@
         }
 
         .promo-section a {
-            color: #ff0000;
+            color: black;
             text-decoration: none;
             font-weight: bold;
         }
@@ -167,78 +152,81 @@
                 align-items: center;
             }
         }
+
         .carousel-container {
-    position: relative;
-    width: 80%;
-    margin: 50px auto;
-    overflow: hidden;
-}
+            position: relative;
+            width: 80%;
+            margin: 50px auto;
+            overflow: hidden;
+        }
 
-.carousel {
-    display: flex;
-    flex-wrap: wrap; /* Display images in a 2x2 grid */
-    transition: transform 0.5s ease-in-out;
-}
+        .carousel {
+            display: flex;
+            flex-wrap: wrap; /* Display images in a 2x2 grid */
+            transition: transform 0.5s ease-in-out;
+        }
 
-.carousel img {
-    width: 50%; /* Display 2 images per row */
-    height: auto;
-}
+        .carousel img {
+            width: 50%; /* Display 2 images per row */
+            height: auto;
+        }
 
-.carousel-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    outline: none;
-    transition: background-color 0.3s;
-}
+        .carousel-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s;
+        }
 
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
-.prev {
-    left: 10px;
-}
+        .prev {
+            left: 10px;
+        }
 
-.next {
-    right: 10px;
-}
+        .next {
+            right: 10px;
+        }
+
+       
     </style>
 </head>
 <body>
 
     <!-- Header -->
     <header class="header">
-        <h1>Cowboy Iron Gym</h1>
-        
+        <a href="index.html">
+            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
+        </a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="memberships.html">Memberships</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="images.html">Images</a></li>
+                <li><a href="merchandise.html">Merchandise</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="memberships.html">Memberships</a></li>
-            <li><a href="trainers.html">Trainers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="images.html">Images</a></li>
-            <li><a href="merchandise.html">Merchandise</a></li> <!-- New merchandise page link -->
-        </ul>
-    </nav>
-    <div >
+    <!-- Carousel Section -->
+    <div class="carousel-container">
         <div class="carousel">
-            <!-- Blank Images (Replace with actual URLs later) -->
+            <!-- Image paths should be updated with actual URLs -->
             <img src="Images/GO.JPG" alt="Image 1">
-            
             <img src="Images/TC.JPG" alt="Image 3">
             <img src="Images/C.jpeg" alt="Image 4">
             <img src="Images/D.jpg" alt="Image 5">
@@ -249,10 +237,34 @@
             <img src="Images/TC.JPG" alt="Image 10">
             <img src="Images/TC1.jpeg" alt="Image 11">
             <img src="Images/TC1.JPG" alt="Image 12">
-            
         </div>
         <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
         <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
     </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            const carousel = document.querySelector('.carousel');
+            const offset = index * 50; // Assuming 2 images per row
+            carousel.style.transform = `translateX(-${offset}%)`;
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex > 0) ? slideIndex - 1 : totalSlides - 1;
+            showSlide(slideIndex);
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex < totalSlides - 1) ? slideIndex + 1 : 0;
+            showSlide(slideIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(slideIndex);
+    </script>
 </body>
 </html>
