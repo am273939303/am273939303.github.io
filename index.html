@@ -24,7 +24,7 @@
             text-align: center;
             font-weight: bolder;
             font-family: 'Palatino', 'Bakersville';
-            font-size: 30px;
+            font-size: 1.875rem; /* 30px */
             position: relative;
         }
 
@@ -34,6 +34,8 @@
             left: 20px;
             transform: translateY(-50%);
             cursor: pointer;
+            width: 100px;
+            height: 100px;
         }
 
         .navbar {
@@ -48,6 +50,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .navbar a {
@@ -78,7 +81,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
-            font-size: 24px;
+            font-size: 1.5rem; /* 24px */
             font-weight: bold;
         }
 
@@ -123,7 +126,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 18px;
+            font-size: 1.125rem; /* 18px */
         }
 
         .checklist-item i {
@@ -190,13 +193,32 @@
             .content-row {
                 flex-direction: column;
             }
+
+            .header .logo {
+                width: 60px;
+                height: 60px;
+                left: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem; /* 24px */
+                padding-left: 80px; /* Space for the logo */
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero-text {
+                font-size: 1.25rem; /* 20px */
+            }
         }
 
         .clock-button {
             background-color: transparent;
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 1.5rem; /* 24px */
             cursor: pointer;
             position: absolute;
             top: 20px;
@@ -229,7 +251,7 @@
         .close {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 1.75rem; /* 28px */
             font-weight: bold;
         }
 
@@ -244,7 +266,7 @@
 <body>
     <header class="header">
         <a href="index.html">
-            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo" width="150" height="150">
+            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <h1>Cowboy Iron Gym</h1>
         <button class="clock-button" onclick="toggleModal()">🕒</button>
@@ -297,7 +319,7 @@
                 </div>
                 <div class="checklist-item">
                     <i>✔️</i>
-                    <span>Frendily environment</span>
+                    <span>Friendly Environment</span>
                 </div>
                 <div class="checklist-item">
                     <i>✔️</i>
@@ -329,7 +351,7 @@
             <h2>Hours of Operation</h2>
             <p>Monday: 6:00 AM - 8:00 PM</p>
             <p>Tuesday: 6:00 AM - 8:00 PM</p>
-            <p>Wendesday: 6:00 AM - 8:00 PM</p>
+            <p>Wednesday: 6:00 AM - 8:00 PM</p>
             <p>Thursday: 6:00 AM - 8:00 PM</p>
             <p>Friday: 6:00 AM - 8:00 PM</p>
             <p>Saturday: 6:00 AM - 8:00 PM</p>
