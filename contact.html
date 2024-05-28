@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cowboy Iron Gym</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
+    <!-- Rate Limiting -->
+    <script>
+        const requestLimit = 100; // Max requests
+        const timeframe = 60 * 1000; // Timeframe in ms
+        let requestCount = 0;
+        let startTime = Date.now();
+
+        function isRateLimited() {
+            if (Date.now() - startTime > timeframe) {
+                startTime = Date.now();
+                requestCount = 0;
+            }
+            requestCount++;
+            return requestCount > requestLimit;
+        }
+
+        // Example usage of rate limiting
+        if (isRateLimited()) {
+            alert('You are making requests too quickly. Please slow down.');
+        } else {
+            // Handle valid request
+        }
+    </script>
     <style>
         body {
             margin: 0;

@@ -6,7 +6,30 @@
     <title>Cowboy Iron Gym</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <!-- Rate Limiting -->
+    <script>
+        const requestLimit = 50; // Max requests
+        const timeframe = 60 * 1000; // Timeframe in ms
+        let requestCount = 0;
+        let startTime = Date.now();
 
+        function isRateLimited() {
+            if (Date.now() - startTime > timeframe) {
+                startTime = Date.now();
+                requestCount = 0;
+            }
+            requestCount++;
+            return requestCount > requestLimit;
+        }
+
+        // Example usage of rate limiting
+        if (isRateLimited()) {
+            alert('You are making requests too quickly. Please slow down.');
+        } else {
+            // Handle valid request
+        }
+    </script>
     <style>
        
 .fa:hover {
