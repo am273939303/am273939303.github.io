@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cowboy Iron Gym - Trainers</title>
+    <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             margin: 0;
@@ -25,9 +27,9 @@
 
         .header .logo {
             cursor: pointer;
-            width: 150px; /* Increased size */
-            height: 150px; /* Increased size */
-            border-radius: 50%; /* Rounded logo */
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
         }
 
         .navbar ul {
@@ -35,7 +37,7 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 30px; /* Increased gap */
+            gap: 30px;
             flex-wrap: wrap;
         }
 
@@ -43,8 +45,8 @@
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            font-size: 1.25rem; /* Increased font size */
-            padding: 10px 15px; /* Increased padding */
+            font-size: 1.25rem;
+            padding: 10px 15px;
             transition: background-color 0.3s;
         }
 
@@ -54,40 +56,148 @@
 
         .box-container {
             display: flex;
-            justify-content: space-around; /* Evenly space the boxes */
+            justify-content: space-around;
             align-items: center;
             flex-wrap: wrap;
             margin: 20px;
         }
 
-        /* Rectangular boxes with shadows */
         .box {
-            width: 300px; /* Adjust the width of the boxes */
-            height: 550px; /* Adjust the height of the boxes */
+            width: 300px;
+            height: auto;
             padding: 25px;
             border-radius: 15px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            text-align: center; /* Center text */
+            text-align: center;
             font-style: bold;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
         }
 
-        /* Square image with rounded corners */
         .box img {
-            border-radius: 15px 15px 0 0; /* Apply rounded corners to the top */
-            width: 100%; /* Make the image fill the container */
-            height: 300px; /* Adjust the height of the image */
-            object-fit: cover; /* Maintain aspect ratio and cover the box */
+            border-radius: 15px 15px 0 0;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
         }
 
-        /* Customize the content inside the boxes */
         .box h2 {
             color: #333;
         }
 
         .box p {
             color: #666;
+        }
+
+        .box .see-more {
+            margin-top: 10px;
+            display: block;
+            padding: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .expanded-info {
+            display: none;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            overflow-y: auto;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .expanded-info .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            color: #ff0000;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .expanded-content {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .expanded-content-left {
+            flex: 1;
+        }
+
+        .expanded-content-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .expanded-content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .expanded-content .checklist {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            margin: 15px 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #000;
+        }
+
+        .checklist li i {
+            color: green;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 100%;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+        }
+
+        .contact-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff0000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #cc0000;
         }
 
         .footer {
@@ -141,7 +251,7 @@
 
         @media (max-width: 768px) {
             .header .logo {
-                width: 80px; /* Adjust size for smaller screens */
+                width: 80px;
                 height: 80px;
             }
 
@@ -189,21 +299,33 @@
             color: #000;
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 1.75rem;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
         .navbar a.active {
             color: red;
+        }
+
+        .fa-instagram {
+            background: red;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Style all font awesome icons */
+        .fa {
+            padding: 10px;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50%;
+            margin-top: 5px;
+        }
+
+        /* Add a hover effect if you want */
+        .fa:hover {
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -216,12 +338,13 @@
         </a>
         <nav class="navbar">
             <ul>
-                <li><a href="index.html" >Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="memberships.html">Memberships</a></li>
                 <li><a href="trainers.html" class="active">Trainers</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="images.html" >Images</a></li>
+                <li><a href="images.html">Images</a></li>
                 <li><a href="merchandise.html">Merchandise</a></li>
+                <li><a href="Polcies.html">Gym Policies</a></li>
             </ul>
         </nav>
         <button class="clock-button" onclick="toggleModal()">🕒</button>
@@ -231,24 +354,123 @@
         <!-- Rectangular boxes with information and images -->
         <div class="box-container">
             <div class="box">
-                <img src="Images/logo.jpeg" alt="Image 1">
+                <img src="Images/Kyra.jpg" alt="Kyra Spencer">
+                <h2>Kyra Spencer</h2>
+                <p>Certified Personal Trainer</p>
+                <p>Mobile: 5057284188</p>
+                <a class="see-more" onclick="expandInfo(this.parentElement)">See More</a>
+                <div class="expanded-info">
+                    <span class="close" onclick="closeInfo(this)">&times;</span>
+                    <div class="expanded-content">
+                        <div class="expanded-content-left">
+                            <img src="Images/logo.jpeg" alt="Kyra Spencer">
+                            <p>About me: </p>
+                            <ul class="checklist">
+                                <li><i class="fa fa-check"></i> Personal Training</li>
+                                <li><i class="fa fa-check"></i> Fitness Coaching</li>
+                                <li><i class="fa fa-check"></i> NASAM Certified</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-content-right">
+                            <form class="contact-form" id="contact-form-kyra">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <input type="email" name="email" placeholder="Your Email" required>
+                                <textarea name="message" placeholder="Your Message" required></textarea>
+                                <button type="submit">Send</button>
+                            </form>
+                            <div class="social">
+                                <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/joey.jpg" alt="Joey Guillen">
+                <h2>Joey Guillen</h2>
+                <p>International Sports Sciences Association Certified Personal Trainer</p>
+                
+                <p>Mobile: 5058793750</p>
+                <a class="see-more" onclick="expandInfo(this.parentElement)">See More</a>
+                <div class="expanded-info">
+                    <span class="close" onclick="closeInfo(this)">&times;</span>
+                    <div class="expanded-content">
+                        <div class="expanded-content-left">
+                            <img src="Images/logo.jpeg" alt="Joey Guillen">
+                            <p>About me: </p>
+                            <ul class="checklist">
+                                <li><i class="fa fa-check"></i> Personal Training</li>
+                                <li><i class="fa fa-check"></i> Nutrition</li>
+                                <li><i class="fa fa-check"></i> ISSA Certified</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-content-right">
+                            <form class="contact-form" id="contact-form-joey">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <input type="email" name="email" placeholder="Your Email" required>
+                                <textarea name="message" placeholder="Your Message" required></textarea>
+                                <button type="submit">Send</button>
+                            </form>
+                            <div class="social">
+                                <a href="https://www.instagram.com/joey_jen_2006/" class="fa fa-instagram"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/Blake.jpg" alt="Blake Wallace">
                 <h2>Blake Wallace</h2>
                 <p>Certified Personal Trainer/BodyBuilding Coach</p>
                 <p>Mobile: 9178857856</p>
+                <a class="see-more" onclick="expandInfo(this.parentElement)">See More</a>
+                <div class="expanded-info">
+                    <span class="close" onclick="closeInfo(this)">&times;</span>
+                    <div class="expanded-content">
+                        <div class="expanded-content-left">
+                            <img src="Images/logo.jpeg" alt="Blake Wallace">
+                            <p>About me: </p>
+                            <ul class="checklist">
+                                <li><i class="fa fa-check"></i> Personal Training</li>
+                                <li><i class="fa fa-check"></i> Bodybuilding Coaching</li>
+                                <li><i class="fa fa-check"></i> ISSA Certified</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-content-right">
+                            <!-- Removed form for Blake Wallace -->
+                            <div class="social">
+                                <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="box">
-                <img src="Images/logo.jpeg" alt="Image 2">
-                <h2>Joey Guillen</h2>
-                <p>International Sports Sciences Association Certified Personal Trainer</p>
-                <p>Exercise And Diet Programs For Men, Women, And Youth</p>
-                <p>Mobile: 5058793750</p>
-                <p>Instagram: @Joey_jen_2006</p>
-            </div>
-            <div class="box">
-                <img src="Images/logo.jpeg" alt="Image 3">
+                <img src="Images/Zar.jpg" alt="Zarinah Diallo">
                 <h2>Zarinah Diallo</h2>
                 <p>International Sports Sciences Association Certified Personal Trainer</p>
                 <p>Mobile: 5059790373</p>
+                <a class="see-more" onclick="expandInfo(this.parentElement)">See More</a>
+                <div class="expanded-info">
+                    <span class="close" onclick="closeInfo(this)">&times;</span>
+                    <div class="expanded-content">
+                        <div class="expanded-content-left">
+                            <img src="Images/logo.jpeg" alt="Zarinah Diallo">
+                            <p>About me: </p>
+                            <ul class="checklist">
+                                <li><i class="fa fa-check"></i> Personal Training</li>
+                                <li><i class="fa fa-check"></i> Strength Training</li>
+                                <li><i class="fa fa-check"></i> ISSA Certified</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-content-right">
+                            <!-- Removed form for Zarinah Diallo -->
+                            <div class="social">
+                                <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -260,7 +482,7 @@
             <div>
                 <h2>Shop the Cowboy Iron Gym Collection</h2>
                 <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-                <p>Cowboy Iron Gym Merchandise. We only have hats In Stock we will be getting a huge order in</p>
+                <p>Cowboy Iron Gym Merchandise.</p>
                 <a href="merchandise.html">Shop Now</a>
             </div>
         </div>
@@ -269,7 +491,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="toggleModal()">&times;</span>
-            <h2>Hours of Operation</h2>
+            <h2>Staffed Hours of Operation</h2>
             <p>Monday: 6:00 AM - 8:00 PM</p>
             <p>Tuesday: 6:00 AM - 8:00 PM</p>
             <p>Wednesday: 6:00 AM - 8:00 PM</p>
@@ -280,18 +502,59 @@
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("DJjIZHBDAmaWNa9Xc");
+        })();
+
         function toggleModal() {
             var modal = document.getElementById("myModal");
             modal.style.display = (modal.style.display === "block") ? "none" : "block";
         }
 
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        function expandInfo(box) {
+            var expandedInfo = box.querySelector('.expanded-info');
+            var otherBoxes = document.querySelectorAll('.box');
+            otherBoxes.forEach(function(otherBox) {
+                if (otherBox !== box) {
+                    otherBox.style.display = 'none';
+                }
+            });
+            expandedInfo.style.display = "block";
+            box.style.transform = "scale(1.2)";
         }
+
+        function closeInfo(closeButton) {
+            var expandedInfo = closeButton.parentElement;
+            var box = expandedInfo.parentElement;
+            expandedInfo.style.display = "none";
+            box.style.transform = "scale(1)";
+            var otherBoxes = document.querySelectorAll('.box');
+            otherBoxes.forEach(function(otherBox) {
+                otherBox.style.display = 'block';
+            });
+        }
+
+        function submitForm(event, formId, templateId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+
+            emailjs.sendForm('service_5x1sjti', templateId, form)
+                .then(function() {
+                    alert('Email sent successfully!');
+                }, function(error) {
+                    alert('Failed to send email: ' + JSON.stringify(error));
+                });
+        }
+
+        document.getElementById('contact-form-kyra').addEventListener('submit', function(event) {
+            submitForm(event, 'contact-form-kyra', 'template_kyra');
+        });
+
+        document.getElementById('contact-form-joey').addEventListener('submit', function(event) {
+            submitForm(event, 'contact-form-joey', 'template_joey');
+        });
     </script>
 </body>
 </html>

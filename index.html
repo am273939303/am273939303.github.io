@@ -4,7 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cowboy Iron Gym</title>
+    <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <!-- Rate Limiting -->
+    <script>
+        const requestLimit = 50; // Max requests
+        const timeframe = 60 * 1000; // Timeframe in ms
+        let requestCount = 0;
+        let startTime = Date.now();
+
+        function isRateLimited() {
+            if (Date.now() - startTime > timeframe) {
+                startTime = Date.now();
+                requestCount = 0;
+            }
+            requestCount++;
+            return requestCount > requestLimit;
+        }
+
+        // Example usage of rate limiting
+        if (isRateLimited()) {
+            alert('You are making requests too quickly. Please slow down.');
+        } else {
+            // Handle valid request
+        }
+    </script>
     <style>
+       
+.fa:hover {
+  opacity: 0.7;
+}
+
+
+.fa-instagram {
+  background: red;
+  color: black;
+ 
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
         body {
             margin: 0;
             padding: 0;
@@ -243,6 +288,9 @@
             font-size: 1.75rem;
             font-weight: bold;
         }
+        .social {
+            font-weight: bolder;
+        }
 
         .close:hover,
         .close:focus {
@@ -265,6 +313,7 @@
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="images.html">Images</a></li>
                 <li><a href="merchandise.html">Merchandise</a></li>
+                <li><a href="Polcies.html">Gym Policies</a></li>
             </ul>
         </nav>
         <button class="clock-button" onclick="toggleModal()">🕒</button>
@@ -273,7 +322,7 @@
     <section class="hero">
         <div class="hero-text">
             <h2>COWBOY IRON GYM IS OPEN</h2>
-            <p>Thank you for being the strength of our community</p>
+            <p>Decide.Commit.Succeed</p>
             <a href="memberships.html" style="color: white; text-decoration: underline;">GYM MEMBERSHIPS</a>
         </div>
     </section>
@@ -326,16 +375,20 @@
             <div>
                 <h2>Shop the Cowboy Iron Gym Collection</h2>
                 <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-                <p>Cowboy Iron Gym Merchandise. We only have hats In Stock we will be getting a huge order in</p>
+                <p>Cowboy Iron Gym Merchandise.</p>
                 <a href="merchandise.html">Shop Now</a>
             </div>
+        </div>
+        <div>
+            <P class="social">Instagram</P>
+            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
         </div>
     </footer>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="toggleModal()">&times;</span>
-            <h2>Hours of Operation</h2>
+            <h2>Staffed Hours of Operation</h2>
             <p>Monday: 6:00 AM - 8:00 PM</p>
             <p>Tuesday: 6:00 AM - 8:00 PM</p>
             <p>Wednesday: 6:00 AM - 8:00 PM</p>
@@ -359,5 +412,6 @@
             }
         }
     </script>
+    
 </body>
 </html>

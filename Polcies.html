@@ -49,9 +49,9 @@
 
         .header .logo {
             cursor: pointer;
-            width: 150px; /* Increased size */
-            height: 150px; /* Increased size */
-            border-radius: 50%; /* Rounded logo */
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
         }
 
         .navbar ul {
@@ -59,7 +59,7 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 30px; /* Increased gap */
+            gap: 30px;
             flex-wrap: wrap;
         }
 
@@ -67,8 +67,8 @@
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            font-size: 1.25rem; /* Increased font size */
-            padding: 10px 15px; /* Increased padding */
+            font-size: 1.25rem;
+            padding: 10px 15px;
             transition: background-color 0.3s;
         }
 
@@ -80,23 +80,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            text-align: left;
             gap: 20px;
             padding: 40px;
             margin: 20px;
-            background-color: transparent; /* Removed grey background */
+            background-color: transparent;
         }
 
         .content-container h2 {
             color: #ff0000;
             margin: 0;
-            font-size: 32px; /* Larger font size */
+            font-size: 32px;
         }
 
         .content-container p {
             color: #fff;
             margin: 10px 0 0;
-            font-size: 20px; /* Larger font size */
+            font-size: 20px;
+            line-height: 1.5;
         }
 
         .footer {
@@ -117,7 +118,7 @@
             text-align: center;
             gap: 20px;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
             max-width: 90%;
         }
@@ -150,7 +151,7 @@
 
         @media (max-width: 768px) {
             .header .logo {
-                width: 80px; /* Adjust size for smaller screens */
+                width: 80px;
                 height: 80px;
             }
 
@@ -220,15 +221,15 @@
             top: 0;
             left: 0;
             z-index: -1;
-            opacity: 0.5; /* Adjust transparency */
+            opacity: 0.5;
         }
+
         .navbar a.active {
             color: red;
         }
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <header class="header">
         <a href="index.html">
@@ -236,13 +237,13 @@
         </a>
         <nav class="navbar">
             <ul>
-                <li><a href="index.html" >Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="memberships.html">Memberships</a></li>
                 <li><a href="trainers.html">Trainers</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" >Contact</a></li>
                 <li><a href="images.html">Images</a></li>
                 <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="Polcies.html">Gym Policies</a></li>
+                <li><a href="policies.html" class="active">Gym Policies</a></li>
             </ul>
         </nav>
         <button class="clock-button" onclick="toggleModal()">🕒</button>
@@ -250,15 +251,19 @@
 
     <!-- Contact Section -->
     <div class="content-container">
-        <h2>Contact</h2>
-        <p>Front Desk: 505-979-7973</p>
-        <p>Email: cowboyirongym@gmail.com</p>
+        <h2>Gym Policies</h2>
+        <p>Cowboy Iron Gym is not liable for any injuries that may occur while in this facility. You assume all risks by entering Cowboy Iron Gym regardless of whether you have signed a liability waiver.</p>
+        <p>I acknowledge that participating in gym activities, using gym equipment, and performing exercises at Cowboy Iron Gym involves risks, including but not limited to the risk of personal injury, disability, or death. I voluntarily assume all risks associated with the use of Cowboy Iron Gym and agree to release, discharge, indemnify, and hold harmless Cowboy Iron Gym, its owners, employees, and agents from any and all claims, demands, causes of action, damages, or liabilities arising out of or related to my use of the gym, including but not limited to claims for personal injury, wrongful death, or property damage. It is my duty to consult a physician before engaging in physical activity.</p>
+        <p>• Entering this gym without a valid membership or pass is criminal trespassing and theft of services. We will prosecute. Members are NOT allowed to bring guests or share barcodes/QR Codes. Day passes are available for purchase at the front desk during staffed hours or online.</p>
+        <p>• The gym is under 24/7 surveillance, and video may be used to assist in the prosecution of crimes. We do not tolerate sexual harassment, violent aggression toward others, or abusive language used toward other members or staff. Gym users should respect the rights of others and not engage in disruptive or disrespectful behavior.</p>
+        <p>• The gym is not liable for photos or videos taken within the facility. Content creators must contact the gym and obtain permission to create digital content within the gym. Members may take photos/videos and use accessories like a small tripod provided they are courteous to other members. Disregard for other members or the gym will result in the termination of membership.</p>
+        <p>• No children under the age of 14 are allowed on the gym floor at any time unless otherwise approved by gym staff.</p>
+        <p>• Put dumbbells, plates, and equipment away after use. Any abuse of equipment can result in a terminated membership.</p>
+        <p>• For your protection and health, sanitize equipment before and after use. Cowboy Iron Gym reserves the right to terminate a membership at any time and for any reason.</p>
     </div>
 
     <!-- Footer -->
-   
-        <img src="./Images/logo.jpeg" alt="Background Image" class="background-image">
-  
+    <img src="./Images/logo.jpeg" alt="Background Image" class="background-image">
 
     <div id="myModal" class="modal">
         <div class="modal-content">

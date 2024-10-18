@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cowboy Iron Gym</title>
+    <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
+<!-- Rate Limiting -->
+<script>
+    const requestLimit = 100; // Max requests
+    const timeframe = 60 * 1000; // Timeframe in ms
+    let requestCount = 0;
+    let startTime = Date.now();
+
+    function isRateLimited() {
+        if (Date.now() - startTime > timeframe) {
+            startTime = Date.now();
+            requestCount = 0;
+        }
+        requestCount++;
+        return requestCount > requestLimit;
+    }
+
+    // Example usage of rate limiting
+    if (isRateLimited()) {
+        alert('You are making requests too quickly. Please slow down.');
+    } else {
+        // Handle valid request
+    }
+</script>
     <style>
         body {
             margin: 0;
@@ -220,6 +244,7 @@
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="images.html" class="active">Images</a></li>
                 <li><a href="merchandise.html">Merchandise</a></li>
+                <li><a href="Polcies.html">Gym Policies</a></li>
             </ul>
         </nav>
     </header>
@@ -230,14 +255,14 @@
             <!-- Image paths should be updated with actual URLs -->
             <img src="Images/GO.JPG" alt="Image 1">
             <img src="Images/TC.JPG" alt="Image 3">
-            <img src="Images/C.jpeg" alt="Image 4">
+            
             <img src="Images/D.jpg" alt="Image 5">
-            <img src="Images/F.JPG" alt="Image 6">
+           
             <img src="Images/GYM.jpg" alt="Image 7">
             <img src="Images/GYM1.jpg" alt="Image 8">
             <img src="Images/logo1.JPG" alt="Image 9">
             <img src="Images/TC.JPG" alt="Image 10">
-            <img src="Images/TC1.jpeg" alt="Image 11">
+           
             <img src="Images/TC1.JPG" alt="Image 12">
         </div>
         <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
