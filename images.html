@@ -17,43 +17,42 @@
             color: #fff;
         }
 
-        .header, .navbar {
-            width: 100%;
-            background-color: #000;
-            color: white;
+        .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 20px;
+            background-color: #111;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header .logo {
-            cursor: pointer;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            cursor: pointer;
         }
 
-        .navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .navbar {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .navbar a {
-            text-decoration: none;
             color: #fff;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 1.25rem;
             padding: 10px 15px;
             transition: background-color 0.3s;
         }
 
-        .navbar a:hover, .navbar a.active {
+        .navbar a:hover {
             background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a.active {
+            color: #ff0000;
         }
 
         .carousel-container {
@@ -109,12 +108,13 @@
         }
 
         @media (max-width: 768px) {
-            .header .logo {
-                width: 80px;
-                height: 80px;
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
 
-            .navbar ul {
+            .navbar {
                 flex-direction: column;
                 align-items: center;
             }
@@ -142,15 +142,13 @@
             <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <nav class="navbar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="memberships.html">Memberships</a></li>
-                <li><a href="trainers.html">Trainers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="images.html" class="active">Images</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="policies.html">Gym Policies</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="memberships.html">Memberships</a>
+            <a href="trainers.html">Trainers</a>
+            <a href="contact.html">Contact</a>
+            <a href="images.html" class="active">Images</a>
+            <a href="merchandise.html">Merchandise</a>
+            <a href="policies.html">Gym Policies</a>
         </nav>
     </header>
 
