@@ -3,93 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cowboy Iron Gym</title>
+    <title>Cowboy Iron Gym - Gallery</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
-    <!-- Rate Limiting -->
-    <script>
-        const requestLimit = 50; // Max requests
-        const timeframe = 60 * 1000; // Timeframe in ms
-        let requestCount = 0;
-        let startTime = Date.now();
-
-        function isRateLimited() {
-            if (Date.now() - startTime > timeframe) {
-                startTime = Date.now();
-                requestCount = 0;
-            }
-            requestCount++;
-            return requestCount > requestLimit;
-        }
-
-        // Example usage of rate limiting
-        if (isRateLimited()) {
-            alert('You are making requests too quickly. Please slow down.');
-        } else {
-            // Handle valid request
-        }
-    </script>
     <style>
-       
-.fa:hover {
-  opacity: 0.7;
-}
-
-
-.fa-instagram {
-  background: red;
-  color: black;
- 
-}
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 30px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
-}
         body {
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #000;
+            background: linear-gradient(90deg, black, #000000);
+            background-size: 200% 100%;
+            animation: gradientAnimation 10s ease infinite alternate;
             color: #fff;
         }
 
-        .header, .navbar {
-            width: 100%;
-            background-color: #000;
-            color: white;
+        .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 20px;
+            background-color: #111;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
             cursor: pointer;
-            width: 150px; /* Increased size */
-            height: 150px; /* Increased size */
-            border-radius: 50%; /* Rounded logo */
         }
 
-        .navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .navbar {
             display: flex;
-            gap: 30px; /* Increased gap */
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .navbar a {
-            text-decoration: none;
             color: #fff;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 1.25rem; /* Increased font size */
-            padding: 10px 15px; /* Increased padding */
+            padding: 10px 15px;
             transition: background-color 0.3s;
         }
 
@@ -98,320 +52,147 @@
         }
 
         .navbar a.active {
-            color: red;
+            color: #ff0000;
         }
 
-        .hero {
+        .carousel-container {
             position: relative;
-            background: url('/Images/GYM1.jpg') no-repeat center center/cover;
-            min-height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .hero-text {
-            position: relative;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .main-content {
-            background-color: #fff;
-            color: #000;
-            border-radius: 15px;
+            width: 90%;
             max-width: 1200px;
-            margin: 40px auto 20px; /* Adjusted margin */
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .text-container {
-            flex: 2;
-            padding: 20px;
-            background-color: #fff;
+            margin: 50px auto;
+            overflow: hidden;
             border-radius: 15px;
-            color: #000;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bolder;
-            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
-        .checklist {
-            flex: 1;
+        .carousel {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
+            transition: transform 0.5s ease-in-out;
         }
 
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.125rem;
-        }
-
-        .checklist-item i {
-            color: grey;
-        }
-
-        .footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-        }
-
-        .promo-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            max-width: 90%;
-        }
-
-        .promo-section img {
+        .carousel img {
             width: 100%;
-            max-width: 200px;
+            max-width: 300px;
+            margin: 10px;
             border-radius: 15px;
         }
 
-        .promo-section div {
-            text-align: left;
+        .carousel-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s;
         }
 
-        .promo-section h2 {
-            margin: 0;
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .promo-section p {
-            margin: 10px 0 0;
+        .prev {
+            left: 10px;
         }
 
-        .promo-section a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #000;
-        }
-
-        .promo-section a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        .next {
+            right: 10px;
         }
 
         @media (max-width: 768px) {
-            .content-row {
+            .header {
                 flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
 
-            .header .logo {
-                width: 80px; /* Adjust size for smaller screens */
-                height: 80px;
+            .navbar {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .hero {
-                min-height: 60vh;
-                padding: 20px;
-            }
-
-            .hero-text {
-                font-size: 1.25rem;
+            .carousel img {
+                max-width: 90%;
             }
         }
 
-        .clock-button {
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            color: #000;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 1.75rem;
-            font-weight: bold;
-        }
-        .social {
-            font-weight: bolder;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header class="header">
         <a href="index.html">
             <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <nav class="navbar">
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="memberships.html" >Memberships</a></li>
-                <li><a href="trainers.html">Trainers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="images.html">Images</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="Polcies.html">Gym Policies</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="memberships.html">Memberships</a>
+            <a href="trainers.html">Trainers</a>
+            <a href="contact.html">Contact</a>
+            <a href="images.html" class="active">Images</a>
+            <a href="merchandise.html">Merchandise</a>
+            <a href="policies.html">Gym Policies</a>
         </nav>
-        <button class="clock-button" onclick="toggleModal()">🕒</button>
     </header>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h2>COWBOY IRON GYM IS OPEN</h2>
-            <p>Decide.Commit.Succeed</p>
-            <a href="memberships.html" style="color: white; text-decoration: underline;">GYM MEMBERSHIPS</a>
+    <!-- Carousel Section -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <!-- Image paths should be updated with actual URLs -->
+            <img src="Images/GO.JPG" alt="Image 1">
+            <img src="Images/TC.JPG" alt="Image 2">
+            <img src="Images/D.jpg" alt="Image 3">
+            <img src="Images/GYM.jpg" alt="Image 4">
+            <img src="Images/GYM1.jpg" alt="Image 5">
+            <img src="Images/logo1.JPG" alt="Image 6">
+            <img src="Images/TC.JPG" alt="Image 7">
+            <img src="Images/TC1.JPG" alt="Image 8">
         </div>
-    </section>
-
-    <div class="main-content">
-        <div class="content-row">
-            <div class="text-container">
-                <p>Step into a world where your fitness journey is not just a routine, but a transformative experience. At our gym, we're proud to offer an array of exceptional services tailored to meet your every need. Our team of expert certified personal trainers are here to provide personalized guidance and support, helping you achieve your fitness goals with confidence. Our inviting environment radiates positivity and camaraderie, creating a space where you can feel at home while you work towards your fitness goals. With state-of-the-art machines and equipment, you'll have everything you need to push your limits and reach new heights. But we're more than just a gym – we're a community united by a shared passion for health and wellness. Whether you're sweating it out in with a trainer or on your own, you'll find support and encouragement every step of the way. Our holistic approach to fitness encompasses not only physical strength, but also mental resilience and spiritual well-being, ensuring that you leave feeling rejuvenated in mind, body, and spirit. Join us at Cowboy Iron Gym and embark on a journey to unlock your full potential. Your transformation begins here!</p>
-            </div>
-            <div class="checklist">
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>24/7 Membership</span>
-                </div>
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>Clean Facilities</span>
-                </div>
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>State-of-the-Art Equipment</span>
-                </div>
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>Personal Training Services</span>
-                </div>
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>Community Events</span>
-                </div>
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>Friendly Environment</span>
-                </div>
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>Open 365 Days a Year</span>
-                </div>
-                <div class="checklist-item">
-                    <i>✔️</i>
-                    <span>Locally Owned</span>
-                </div>
-            </div>
-        </div>
+        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
     </div>
 
-    <footer class="footer">
-        <div class="promo-section">
-            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
-            <div>
-                <h2>Shop the Cowboy Iron Gym Collection</h2>
-                <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-                <p>Cowboy Iron Gym Merchandise.</p>
-                <a href="merchandise.html">Shop Now</a>
-            </div>
-        </div>
-        <div>
-            <P class="social">Instagram</P>
-            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
-        </div>
-    </footer>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleModal()">&times;</span>
-            <h2>Staffed Hours of Operation</h2>
-            <p>Monday: 6:00 AM - 8:00 PM</p>
-            <p>Tuesday: 6:00 AM - 8:00 PM</p>
-            <p>Wednesday: 6:00 AM - 8:00 PM</p>
-            <p>Thursday: 6:00 AM - 8:00 PM</p>
-            <p>Friday: 6:00 AM - 8:00 PM</p>
-            <p>Saturday: 6:00 AM - 8:00 PM</p>
-            <p>Sunday: 6:00 AM - 8:00 PM</p>
-        </div>
-    </div>
-
+    <!-- JavaScript for Carousel Functionality -->
     <script>
-        function toggleModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = (modal.style.display === "block") ? "none" : "block";
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            const carousel = document.querySelector('.carousel');
+            const offset = index * (100 / totalSlides);
+            carousel.style.transform = `translateX(-${offset}%)`;
         }
 
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        function prevSlide() {
+            slideIndex = (slideIndex > 0) ? slideIndex - 1 : totalSlides - 1;
+            showSlide(slideIndex);
         }
+
+        function nextSlide() {
+            slideIndex = (slideIndex < totalSlides - 1) ? slideIndex + 1 : 0;
+            showSlide(slideIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(slideIndex);
     </script>
-    
 </body>
 </html>

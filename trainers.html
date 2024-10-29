@@ -15,37 +15,33 @@
             color: #fff;
         }
 
-        .header, .navbar {
-            width: 100%;
-            background-color: #000;
-            color: white;
+        .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
+            justify-content: flex-start;
+            padding: 20px;
+            background-color: #111;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header .logo {
-            cursor: pointer;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            cursor: pointer;
+            margin-right: 20px;
         }
 
-        .navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .navbar {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .navbar a {
-            text-decoration: none;
             color: #fff;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 1.25rem;
             padding: 10px 15px;
             transition: background-color 0.3s;
         }
@@ -54,42 +50,63 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
+        .navbar a.active {
+            color: #ff0000;
+        }
+
+        .content-container {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .content-container h2 {
+            font-size: 2.5rem;
+            color: #ff0000;
+            margin-bottom: 40px;
+        }
+
         .box-container {
             display: flex;
             justify-content: space-around;
             align-items: center;
             flex-wrap: wrap;
-            margin: 20px;
+            gap: 30px;
         }
 
         .box {
             width: 300px;
-            height: auto;
             padding: 25px;
             border-radius: 15px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #222;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
             text-align: center;
-            font-style: bold;
             position: relative;
             cursor: pointer;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
         }
 
         .box img {
-            border-radius: 15px 15px 0 0;
+            border-radius: 15px;
             width: 100%;
             height: 300px;
             object-fit: cover;
         }
 
         .box h2 {
-            color: #333;
+            color: #ff0000;
+            margin-top: 15px;
         }
 
         .box p {
-            color: #666;
+            color: #aaa;
         }
 
         .box .see-more {
@@ -100,12 +117,16 @@
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .box .see-more:hover {
+            background-color: #cc0000;
         }
 
         .expanded-info {
             display: none;
-            background-color: #f1f1f1;
+            background-color: #333;
             padding: 15px;
             border-radius: 10px;
             margin-top: 15px;
@@ -116,8 +137,6 @@
             height: 100%;
             z-index: 2;
             overflow-y: auto;
-            transform: scale(1);
-            transition: transform 0.3s ease-in-out;
         }
 
         .expanded-info .close {
@@ -127,7 +146,6 @@
             font-size: 2rem;
             color: #ff0000;
             cursor: pointer;
-            z-index: 3;
         }
 
         .expanded-content {
@@ -165,7 +183,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #000;
+            color: #fff;
         }
 
         .checklist li i {
@@ -184,7 +202,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             width: 100%;
-            box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+            box-sizing: border-box;
         }
 
         .contact-form button {
@@ -194,6 +212,7 @@
             background-color: #ff0000;
             color: #fff;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .contact-form button:hover {
@@ -205,9 +224,10 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            padding: 20px;
-            background-color: #333;
+            padding: 40px;
+            background-color: #111;
             color: #fff;
+            margin-top: 40px;
         }
 
         .promo-section {
@@ -218,7 +238,7 @@
             text-align: center;
             gap: 20px;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #222;
             border-radius: 15px;
             max-width: 90%;
         }
@@ -229,17 +249,13 @@
             border-radius: 15px;
         }
 
-        .promo-section div {
-            text-align: left;
-        }
-
         .promo-section h2 {
             color: #ff0000;
             margin: 0;
         }
 
         .promo-section p {
-            color: #fff;
+            color: #aaa;
             margin: 10px 0 0;
         }
 
@@ -250,108 +266,42 @@
         }
 
         @media (max-width: 768px) {
-            .header .logo {
-                width: 80px;
-                height: 80px;
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
 
-            .navbar ul {
+            .navbar {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .navbar a {
-                padding: 5px 0;
+            .box-container {
+                flex-direction: column;
+                align-items: center;
             }
-        }
-
-        .clock-button {
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            color: #000;
-        }
-
-        .navbar a.active {
-            color: red;
-        }
-
-        .fa-instagram {
-            background: red;
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Style all font awesome icons */
-        .fa {
-            padding: 10px;
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 50%;
-            margin-top: 5px;
-        }
-
-        /* Add a hover effect if you want */
-        .fa:hover {
-            opacity: 0.7;
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="header">
         <a href="index.html">
             <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <nav class="navbar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="memberships.html">Memberships</a></li>
-                <li><a href="trainers.html" class="active">Trainers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="images.html">Images</a></li>
-                <li><a href="merchandise.html">Merchandise</a></li>
-                <li><a href="Polcies.html">Gym Policies</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="memberships.html">Memberships</a>
+            <a href="trainers.html" class="active">Trainers</a>
+            <a href="contact.html">Contact</a>
+            <a href="images.html">Images</a>
+            <a href="merchandise.html">Merchandise</a>
+            <a href="Policies.html">Gym Policies</a>
         </nav>
-        <button class="clock-button" onclick="toggleModal()">🕒</button>
     </header>
 
     <div class="content-container">
-        <!-- Rectangular boxes with information and images -->
+        <h2>Meet Our Trainers</h2>
         <div class="box-container">
             <div class="box">
                 <img src="Images/Kyra.jpg" alt="Kyra Spencer">
@@ -372,13 +322,14 @@
                             </ul>
                         </div>
                         <div class="expanded-content-right">
-                            <form class="contact-form" id="contact-form-kyra">
+                            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                                 <input type="text" name="name" placeholder="Your Name" required>
                                 <input type="email" name="email" placeholder="Your Email" required>
                                 <textarea name="message" placeholder="Your Message" required></textarea>
-                                <button type="submit">Send</button>
+                                <button type="submit">Send Message</button>
                             </form>
                             <div class="social">
+                                <span>Follow me on:</span>
                                 <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
                             </div>
                         </div>
@@ -388,8 +339,7 @@
             <div class="box">
                 <img src="Images/joey.jpg" alt="Joey Guillen">
                 <h2>Joey Guillen</h2>
-                <p>International Sports Sciences Association Certified Personal Trainer</p>
-                
+                <p>ISSA Certified Personal Trainer</p>
                 <p>Mobile: 5058793750</p>
                 <a class="see-more" onclick="expandInfo(this.parentElement)">See More</a>
                 <div class="expanded-info">
@@ -405,13 +355,14 @@
                             </ul>
                         </div>
                         <div class="expanded-content-right">
-                            <form class="contact-form" id="contact-form-joey">
+                            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                                 <input type="text" name="name" placeholder="Your Name" required>
                                 <input type="email" name="email" placeholder="Your Email" required>
                                 <textarea name="message" placeholder="Your Message" required></textarea>
-                                <button type="submit">Send</button>
+                                <button type="submit">Send Message</button>
                             </form>
                             <div class="social">
+                                <span>Follow me on:</span>
                                 <a href="https://www.instagram.com/joey_jen_2006/" class="fa fa-instagram"></a>
                             </div>
                         </div>
@@ -437,8 +388,14 @@
                             </ul>
                         </div>
                         <div class="expanded-content-right">
-                            <!-- Removed form for Blake Wallace -->
+                            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <input type="email" name="email" placeholder="Your Email" required>
+                                <textarea name="message" placeholder="Your Message" required></textarea>
+                                <button type="submit">Send Message</button>
+                            </form>
                             <div class="social">
+                                <span>Follow me on:</span>
                                 <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
                             </div>
                         </div>
@@ -448,7 +405,7 @@
             <div class="box">
                 <img src="Images/Zar.jpg" alt="Zarinah Diallo">
                 <h2>Zarinah Diallo</h2>
-                <p>International Sports Sciences Association Certified Personal Trainer</p>
+                <p>ISSA Certified Personal Trainer</p>
                 <p>Mobile: 5059790373</p>
                 <a class="see-more" onclick="expandInfo(this.parentElement)">See More</a>
                 <div class="expanded-info">
@@ -464,8 +421,14 @@
                             </ul>
                         </div>
                         <div class="expanded-content-right">
-                            <!-- Removed form for Zarinah Diallo -->
+                            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <input type="email" name="email" placeholder="Your Email" required>
+                                <textarea name="message" placeholder="Your Message" required></textarea>
+                                <button type="submit">Send Message</button>
+                            </form>
                             <div class="social">
+                                <span>Follow me on:</span>
                                 <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
                             </div>
                         </div>
@@ -475,44 +438,18 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="promo-section">
             <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
             <div>
                 <h2>Shop the Cowboy Iron Gym Collection</h2>
                 <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-                <p>Cowboy Iron Gym Merchandise.</p>
                 <a href="merchandise.html">Shop Now</a>
             </div>
         </div>
     </footer>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleModal()">&times;</span>
-            <h2>Staffed Hours of Operation</h2>
-            <p>Monday: 6:00 AM - 8:00 PM</p>
-            <p>Tuesday: 6:00 AM - 8:00 PM</p>
-            <p>Wednesday: 6:00 AM - 8:00 PM</p>
-            <p>Thursday: 6:00 AM - 8:00 PM</p>
-            <p>Friday: 6:00 AM - 8:00 PM</p>
-            <p>Saturday: 6:00 AM - 8:00 PM</p>
-            <p>Sunday: 6:00 AM - 8:00 PM</p>
-        </div>
-    </div>
-
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("DJjIZHBDAmaWNa9Xc");
-        })();
-
-        function toggleModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = (modal.style.display === "block") ? "none" : "block";
-        }
-
+    <script>
         function expandInfo(box) {
             var expandedInfo = box.querySelector('.expanded-info');
             var otherBoxes = document.querySelectorAll('.box');
@@ -535,26 +472,6 @@
                 otherBox.style.display = 'block';
             });
         }
-
-        function submitForm(event, formId, templateId) {
-            event.preventDefault();
-            const form = document.getElementById(formId);
-
-            emailjs.sendForm('service_5x1sjti', templateId, form)
-                .then(function() {
-                    alert('Email sent successfully!');
-                }, function(error) {
-                    alert('Failed to send email: ' + JSON.stringify(error));
-                });
-        }
-
-        document.getElementById('contact-form-kyra').addEventListener('submit', function(event) {
-            submitForm(event, 'contact-form-kyra', 'template_kyra');
-        });
-
-        document.getElementById('contact-form-joey').addEventListener('submit', function(event) {
-            submitForm(event, 'contact-form-joey', 'template_joey');
-        });
     </script>
 </body>
 </html>

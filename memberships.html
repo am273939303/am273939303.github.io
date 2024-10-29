@@ -5,29 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cowboy Iron Gym</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
-    <!-- Rate Limiting -->
-    <script>
-        const requestLimit = 100; // Max requests
-        const timeframe = 60 * 1000; // Timeframe in ms
-        let requestCount = 0;
-        let startTime = Date.now();
-
-        function isRateLimited() {
-            if (Date.now() - startTime > timeframe) {
-                startTime = Date.now();
-                requestCount = 0;
-            }
-            requestCount++;
-            return requestCount > requestLimit;
-        }
-
-        // Example usage of rate limiting
-        if (isRateLimited()) {
-            alert('You are making requests too quickly. Please slow down.');
-        } else {
-            // Handle valid request
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             margin: 0;
@@ -37,38 +15,33 @@
             color: #fff;
         }
 
-        .header, .navbar {
-            width: 100%;
-            background-color: #000;
-            color: white;
+        .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 20px;
+            background-color: #111;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
             cursor: pointer;
-            width: 150px; /* Increased size */
-            height: 150px; /* Increased size */
-            border-radius: 50%; /* Rounded logo */
         }
 
-        .navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .navbar {
             display: flex;
-            gap: 30px; /* Increased gap */
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .navbar a {
-            text-decoration: none;
             color: #fff;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 1.25rem; /* Increased font size */
-            padding: 10px 15px; /* Increased padding */
+            padding: 10px 15px;
             transition: background-color 0.3s;
         }
 
@@ -76,10 +49,79 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
+        .navbar a.active {
+            color: #ff0000;
+        }
+
         .content-container {
             max-width: 90%;
             margin: 0 auto;
             padding: 20px;
+            text-align: center;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 75vh;
+            background: url('/Images/GYM1.jpg') no-repeat center center/cover;
+            padding: 20px;
+        }
+
+        .hero-text {
+            position: relative;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .hero-text a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 15px 30px;
+            background-color: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .hero-text a:hover {
+            background-color: #cc0000;
+        }
+
+        .membership-section {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .membership-section h1 {
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+
+        .membership-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .membership-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
         }
 
         .footer {
@@ -88,8 +130,9 @@
             align-items: center;
             gap: 20px;
             padding: 20px;
-            background-color: #333;
+            background-color: #111;
             color: #fff;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .promo-section {
@@ -100,7 +143,7 @@
             text-align: center;
             gap: 20px;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #222;
             border-radius: 15px;
             max-width: 90%;
         }
@@ -121,7 +164,7 @@
         }
 
         .promo-section p {
-            color: #fff;
+            color: #aaa;
             margin: 10px 0 0;
         }
 
@@ -132,30 +175,29 @@
         }
 
         @media (max-width: 768px) {
-            .header .logo {
-                width: 80px; /* Adjust size for smaller screens */
-                height: 80px;
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
 
-            .navbar ul {
+            .navbar {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .navbar a {
-                padding: 5px 0;
+            .hero {
+                min-height: 60vh;
             }
         }
 
         .clock-button {
             background-color: transparent;
             border: none;
-            color: white;
+            color: #fff;
             font-size: 1.5rem;
             cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            margin-left: auto;
         }
 
         .modal {
@@ -175,66 +217,62 @@
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 100%;
             max-width: 600px;
-            text-align: center;
             color: #000;
         }
 
         .close {
-            color: #aaa;
             float: right;
             font-size: 1.75rem;
             font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
             cursor: pointer;
-        }
-        .navbar a.active {
-            color: red;
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="header">
         <a href="index.html">
-            <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
+            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <nav class="navbar">
-            <ul>
-                <li><a href="index.html" >Home</a></li>
-                <li><a href="memberships.html" class="active">Memberships</a></li>
-                <li><a href="trainers.html">Trainers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="images.html">Images</a></li>
-                <li><a href="merchandise.html" >Merchandise</a></li>
-                <li><a href="Polcies.html">Gym Policies</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="memberships.html" class="active">Memberships</a>
+            <a href="trainers.html">Trainers</a>
+            <a href="contact.html">Contact</a>
+            <a href="images.html">Images</a>
+            <a href="merchandise.html">Merchandise</a>
+            <a href="Policies.html">Gym Policies</a>
         </nav>
         <button class="clock-button" onclick="toggleModal()">🕒</button>
     </header>
 
-    <!-- Content Container -->
-    <div>
-       <H1>Coming soon</H1>
+    <section class="hero">
+        <div class="hero-text">
+            <h2>COWBOY IRON GYM IS OPEN</h2>
+            <p>Decide. Commit. Succeed.</p>
+            <a href="https://onlinejoin.abcfitness.com/signup/plan?club=31629">Join Online Now</a>
+        </div>
+    </section>
+
+    <div class="main-content content-container">
+        <div class="membership-section">
+            <h1>Become a Member</h1>
+            <p>Ready to transform your fitness journey? Join Cowboy Iron Gym today and get access to state-of-the-art equipment, certified trainers, and a supportive community.</p>
+            <p>Student Memberships Avalible at Front Desk</p>
+            <iframe src="https://onlinejoin.abcfitness.com/signup/plan?club=31629" class="membership-iframe"></iframe>
+        </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="promo-section">
-            <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
-            <div>
-                <h2>Shop the Cowboy Iron Gym Collection</h2>
-                <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-                <p>Cowboy Iron Gym Merchandise.</p>
-                <a href="merchandise.html">Shop Now</a>
-            </div>
+            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
+            <h2>Shop the Cowboy Iron Gym Collection</h2>
+            <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
+            <a href="merchandise.html">Shop Now</a>
+        </div>
+        <div class="social" style="display: flex; align-items: center; gap: 10px; margin-top: 20px;">
+            <span>Follow us on:</span>
+            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram" style="font-size: 2rem; color: #ff0000; text-decoration: none; transition: color 0.3s;"></a>
         </div>
     </footer>
 
@@ -242,13 +280,7 @@
         <div class="modal-content">
             <span class="close" onclick="toggleModal()">&times;</span>
             <h2>Staffed Hours of Operation</h2>
-            <p>Monday: 6:00 AM - 8:00 PM</p>
-            <p>Tuesday: 6:00 AM - 8:00 PM</p>
-            <p>Wednesday: 6:00 AM - 8:00 PM</p>
-            <p>Thursday: 6:00 AM - 8:00 PM</p>
-            <p>Friday: 6:00 AM - 8:00 PM</p>
-            <p>Saturday: 6:00 AM - 8:00 PM</p>
-            <p>Sunday: 6:00 AM - 8:00 PM</p>
+            <p>Monday - Sunday: 6:00 AM - 8:00 PM</p>
         </div>
     </div>
 
