@@ -6,35 +6,46 @@
     <title>Cowboy Iron Gym</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>
+        /* General Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #000;
             color: #fff;
         }
 
+        /* Header & Navigation */
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: #111;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+            background: rgba(17, 17, 17, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
-        .header .logo {
-            width: 120px;
-            height: 120px;
+        .logo {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             cursor: pointer;
         }
 
         .navbar {
             display: flex;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .navbar a {
@@ -42,176 +53,196 @@
             text-decoration: none;
             font-weight: bold;
             padding: 10px 15px;
-            transition: background-color 0.3s;
+            transition: 0.3s;
+            font-size: 1rem;
+            white-space: nowrap;
         }
 
-        .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar a.active {
+        .navbar a:hover, .navbar a.active {
             color: #ff0000;
         }
 
-        .content-container {
-            max-width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+        /* Hide Home on Desktop */
+        .home-link {
+            display: none;
         }
 
+        .menu-toggle {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #111;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 15px 0;
+            }
+
+            .navbar a {
+                padding: 15px;
+                display: block;
+                font-size: 1.2rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar.show {
+                display: flex;
+            }
+
+            /* Show Home on Mobile */
+            .home-link {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
         .hero {
-            position: relative;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            min-height: 75vh;
+            min-height: 100vh;
             background: url('/Images/GYM1.jpg') no-repeat center center/cover;
-            padding: 20px;
+            padding: 40px;
         }
 
         .hero-text {
-            position: relative;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 60px;
+            border-radius: 15px;
+            max-width: 700px;
+        }
+
+        .hero-text h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .hero-text p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-style: italic;
         }
 
         .hero-text a {
             display: inline-block;
-            margin-top: 15px;
             padding: 15px 30px;
             background-color: #ff0000;
             color: #fff;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: 0.3s;
+            font-size: 1.2rem;
         }
 
         .hero-text a:hover {
             background-color: #cc0000;
         }
 
-        .main-content {
-            background-color: #222;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            margin-top: 30px;
-            color: #ddd;
-        }
-
-        .footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #111;
-            color: #fff;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .promo-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* Auto-Scrolling Service Cards */
+        .services {
+            padding: 50px 20px;
+            background: #222;
             text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
             gap: 20px;
-            padding: 20px;
-            background-color: #222;
+            animation: scrollLoop 15s linear infinite;
+            width: max-content;
+        }
+
+        .service-card {
+            flex: 0 0 250px;
+            background: #333;
+            padding: 30px;
             border-radius: 15px;
-            max-width: 90%;
-        }
-
-        .promo-section img {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 15px;
-        }
-
-        .promo-section h2 {
-            color: #ff0000;
-            margin: 0;
-        }
-
-        .promo-section p {
-            color: #aaa;
-            margin: 10px 0 0;
-        }
-
-        .promo-section a {
-            color: #ff0000;
-            text-decoration: none;
+            text-align: center;
+            font-size: 1.2rem;
             font-weight: bold;
+            transition: 0.3s;
         }
 
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero {
-                min-height: 60vh;
-            }
+        .service-card:hover {
+            transform: scale(1.05);
         }
 
-        .clock-button {
-            background-color: transparent;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-            margin-left: auto;
+        @keyframes scrollLoop {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #111;
+            font-size: 1rem;
         }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            max-width: 600px;
-            color: #000;
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
         }
 
-        .close {
-            float: right;
-            font-size: 1.75rem;
-            font-weight: bold;
-            cursor: pointer;
+        .social a {
+            font-size: 2rem;
+            color: #ff0000;
+            transition: 0.3s;
         }
+
+        .social a:hover {
+            color: #cc0000;
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header class="header">
         <a href="index.html">
             <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
+        <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
         <nav class="navbar">
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html" class="home-link">Home</a> <!-- Visible only on mobile -->
             <a href="memberships.html">Memberships</a>
             <a href="trainers.html">Trainers</a>
             <a href="contact.html">Contact</a>
@@ -219,57 +250,47 @@
             <a href="merchandise.html">Merchandise</a>
             <a href="Policies.html">Gym Policies</a>
         </nav>
-        <button class="clock-button" onclick="toggleModal()">🕒</button>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-text">
-            <h2>COWBOY IRON GYM IS OPEN</h2>
-            <p>Decide. Commit. Succeed.</p>
-            <a href="memberships.html">GYM MEMBERSHIPS</a>
+            <h2>Decide. Commit. Succeed.</h2>
+            <p>Unleash Your Strength, Build Your Legacy</p>
+            <a href="memberships.html">Join Now</a>
         </div>
     </section>
 
-    <div class="main-content content-container">
-        <h2>Welcome to Cowboy Iron Gym</h2>
-        <p>Step into a world where your fitness journey is not just a routine, but a transformative experience. At Cowboy Iron Gym, we offer an array of exceptional services tailored to meet your every need. Our team of certified trainers provides personalized guidance, ensuring that you achieve your fitness goals. Enjoy our state-of-the-art equipment and a welcoming environment, all while being part of a community united by health and wellness. Join us and embark on a journey to unlock your full potential!</p>
-    
-    </div>
-
-
-    <footer class="footer">
-        <div class="promo-section">
-            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
-            <h2>Shop the Cowboy Iron Gym Collection</h2>
-            <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-            <a href="merchandise.html">Shop Now</a>
+    <!-- Auto-Scrolling Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="service-card">💆 Massages</div>
+                <div class="service-card">🏋️ Trainers</div>
+                <div class="service-card">🏋️‍♂️ MaxPump Equipment</div>
+                <div class="service-card">🚿 Changing Rooms</div>
+                <div class="service-card">💊 Supplements</div>
+                <!-- Duplicate for infinite loop effect -->
+                <div class="service-card">💆 Massages</div>
+                <div class="service-card">🏋️ Trainers</div>
+                <div class="service-card">🏋️‍♂️ MaxPump Equipment</div>
+            </div>
         </div>
-        <div class="social" style="display: flex; align-items: center; gap: 10px; margin-top: 20px;">
-            <span>Follow us on:</span>
-            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram" style="font-size: 2rem; color: #ff0000; text-decoration: none; transition: color 0.3s;"></a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
         </div>
     </footer>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleModal()">&times;</span>
-            <h2>Staffed Hours of Operation</h2>
-            <p>Monday - Sunday: 6:00 AM - 8:00 PM</p>
-        </div>
-    </div>
-
     <script>
-        function toggleModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = (modal.style.display === "block") ? "none" : "block";
-        }
-
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        function toggleMenu() {
+            document.querySelector('.navbar').classList.toggle('show');
         }
     </script>
+
 </body>
 </html>
