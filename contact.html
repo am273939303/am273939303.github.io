@@ -3,39 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cowboy Iron Gym - Contact</title>
+    <title>Contact - Cowboy Iron Gym</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>
+        /* General Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #000;
             color: #fff;
         }
 
+        /* Header & Navigation */
         .header {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding: 20px;
-            background-color: #111;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+            background: rgba(17, 17, 17, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
-        .header .logo {
-            width: 120px;
-            height: 120px;
+        .logo {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             cursor: pointer;
-            margin-right: 20px;
         }
 
         .navbar {
             display: flex;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .navbar a {
@@ -43,49 +53,74 @@
             text-decoration: none;
             font-weight: bold;
             padding: 10px 15px;
-            transition: background-color 0.3s;
+            transition: 0.3s;
+            font-size: 1rem;
+            white-space: nowrap;
         }
 
-        .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar a.active {
+        .navbar a:hover, .navbar a.active {
             color: #ff0000;
         }
-        .content-container {
-            max-width: 90%;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #222;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+        .menu-toggle {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
         }
 
-        .content-container h2 {
-            font-size: 2.5rem;
+        /* Responsive Navigation */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #111;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 15px 0;
+            }
+
+            .navbar a {
+                padding: 15px;
+                display: block;
+                font-size: 1.2rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar.show {
+                display: flex;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 140px 20px 60px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
             color: #ff0000;
             margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .content-container p {
-            color: #aaa;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            text-align: center;
         }
 
         .contact-details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #bbb;
         }
 
-        .contact-details div {
-            margin-bottom: 10px;
-            font-size: 1.25rem;
+        .contact-details i {
+            color: #ff0000;
+            margin-right: 10px;
         }
 
         .contact-details a {
@@ -94,161 +129,101 @@
             font-weight: bold;
         }
 
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
         .form-container {
             max-width: 600px;
             width: 100%;
-            background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            background-color: #222;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
             margin: 40px auto;
+            text-align: center;
         }
 
-        .form-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .form-container h2 {
+            font-size: 2rem;
+            color: #ff0000;
+            margin-bottom: 20px;
         }
 
         .form-container input, .form-container textarea {
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
             width: 100%;
             font-size: 1rem;
-            box-sizing: border-box;
+            margin-bottom: 10px;
         }
 
         .form-container button {
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
             background-color: #ff0000;
             color: #fff;
             font-weight: bold;
             cursor: pointer;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+            transition: background 0.3s;
         }
 
         .form-container button:hover {
             background-color: #cc0000;
         }
 
+        /* Map */
+        .map-container {
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Footer */
         .footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 40px;
+            text-align: center;
+            padding: 30px;
             background-color: #111;
-            color: #fff;
-            margin-top: 40px;
+            font-size: 1rem;
         }
 
-        .promo-section {
+        .social {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #222;
-            border-radius: 15px;
-            max-width: 90%;
+            gap: 15px;
+            margin-top: 10px;
         }
 
-        .promo-section img {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 15px;
-        }
-
-        .promo-section h2 {
+        .social a {
+            font-size: 2rem;
             color: #ff0000;
-            margin: 0;
+            transition: 0.3s;
         }
 
-        .promo-section p {
-            color: #aaa;
-            margin: 10px 0 0;
-        }
-
-        .promo-section a {
-            color: #ff0000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        .clock-button {
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            color: #000;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 1.75rem;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        .social a:hover {
+            color: #cc0000;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header class="header">
         <a href="index.html">
-            <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
+            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <nav class="navbar">
-            <a href="index.html">Home</a>
             <a href="memberships.html">Memberships</a>
             <a href="trainers.html">Trainers</a>
             <a href="contact.html" class="active">Contact</a>
@@ -258,18 +233,20 @@
         </nav>
     </header>
 
-    <div class="content-container">
+    <!-- Contact Section -->
+    <section class="contact-section">
         <h2>Contact Us</h2>
         <div class="contact-details">
-            <div><i class="fa fa-phone"></i> Front Desk: 505-979-7973</div>
-            <div><i class="fa fa-envelope"></i> Email: <a href="mailto:cowboyirongym@gmail.com">cowboyirongym@gmail.com</a></div>
-            <div><i class="fa fa-instagram"></i> Instagram: <a href="https://www.instagram.com/cowboyirongym/">@cowboyirongym</a></div>
+            <p><i class="fa fa-phone"></i> Front Desk: 505-979-7973</p>
+            <p><i class="fa fa-envelope"></i> Email: <a href="mailto:cowboyirongym@gmail.com">cowboyirongym@gmail.com</a></p>
+            <p><i class="fa fa-instagram"></i> Instagram: <a href="https://www.instagram.com/cowboyirongym/">@cowboyirongym</a></p>
         </div>
-    </div>
+    </section>
 
+    <!-- Contact Form -->
     <div class="form-container">
         <h2>Send Us a Message</h2>
-        <form action="https://formspree.io/f/your-form-id" method="POST">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="_replyto" placeholder="Your Email" required>
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
@@ -277,43 +254,17 @@
         </form>
     </div>
 
+    <!-- Google Map -->
+    <div class="map-container">
+        <iframe src="https://maps.google.com/maps?q=Cowboy%20Iron%20Gym&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="promo-section">
-            <img src="Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
-            <div>
-                <h2>Shop the Cowboy Iron Gym Collection</h2>
-                <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-                <a href="merchandise.html">Shop Now</a>
-            </div>
+        <div class="social">
+            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
         </div>
     </footer>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleModal()">&times;</span>
-            <h2>Staffed Hours of Operation</h2>
-            <p>Monday: 6:00 AM - 8:00 PM</p>
-            <p>Tuesday: 6:00 AM - 8:00 PM</p>
-            <p>Wednesday: 6:00 AM - 8:00 PM</p>
-            <p>Thursday: 6:00 AM - 8:00 PM</p>
-            <p>Friday: 6:00 AM - 8:00 PM</p>
-            <p>Saturday: 6:00 AM - 8:00 PM</p>
-            <p>Sunday: 6:00 AM - 8:00 PM</p>
-        </div>
-    </div>
-
-    <script>
-        function toggleModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = (modal.style.display === "block") ? "none" : "block";
-        }
-
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>

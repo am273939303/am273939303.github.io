@@ -6,35 +6,46 @@
     <title>Merchandise - Cowboy Iron Gym</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>
+        /* General Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #000;
             color: #fff;
         }
 
+        /* Header & Navigation */
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: #111;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+            background: rgba(17, 17, 17, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
-        .header .logo {
-            width: 120px;
-            height: 120px;
+        .logo {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             cursor: pointer;
         }
 
         .navbar {
             display: flex;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .navbar a {
@@ -42,98 +53,117 @@
             text-decoration: none;
             font-weight: bold;
             padding: 10px 15px;
-            transition: background-color 0.3s;
+            transition: 0.3s;
+            font-size: 1rem;
+            white-space: nowrap;
         }
 
-        .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar a.active {
+        .navbar a:hover, .navbar a.active {
             color: #ff0000;
         }
 
-        .main-content {
-            background-color: #000;
-            color: #fff;
-            border-radius: 15px;
-            max-width: 1200px;
-            margin: 40px auto 20px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .menu-toggle {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
         }
 
-        .footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #111;
-            color: #fff;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .promo-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #222;
-            border-radius: 15px;
-            max-width: 90%;
-        }
-
-        .promo-section img {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 15px;
-        }
-
-        .promo-section div {
-            text-align: left;
-        }
-
-        .promo-section h2 {
-            color: #ff0000;
-            margin: 0;
-        }
-
-        .promo-section p {
-            color: #aaa;
-            margin: 10px 0 0;
-        }
-
-        .promo-section a {
-            color: #ff0000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+        /* Responsive Navigation */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
             }
 
             .navbar {
+                display: none;
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
+                background: #111;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 15px 0;
             }
+
+            .navbar a {
+                padding: 15px;
+                display: block;
+                font-size: 1.2rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar.show {
+                display: flex;
+            }
+        }
+
+        /* Merchandise Section */
+        .merch-section {
+            padding: 140px 20px 60px;
+            text-align: center;
+        }
+
+        .merch-section h2 {
+            font-size: 3rem;
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+
+        .merch-description {
+            font-size: 1.2rem;
+            color: #bbb;
+            max-width: 800px;
+            margin: auto;
+            margin-bottom: 40px;
+        }
+
+        /* Shopify Product Display */
+        .shopify-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: #222;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #111;
+            font-size: 1rem;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social a {
+            font-size: 2rem;
+            color: #ff0000;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            color: #cc0000;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header class="header">
         <a href="index.html">
             <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <nav class="navbar">
-            <a href="index.html">Home</a>
             <a href="memberships.html">Memberships</a>
             <a href="trainers.html">Trainers</a>
             <a href="contact.html">Contact</a>
@@ -143,47 +173,25 @@
         </nav>
     </header>
 
-    <div class="main-content">
-        <div id='collection-component-1716587404255'></div>
-    </div>
+    <!-- Merchandise Section -->
+    <section class="merch-section">
+        <h2>Shop Cowboy Iron Gym Merchandise</h2>
+        <p class="merch-description">Rep the Cowboy Iron Gym with exclusive merch! Grab your favorite hoodies, t-shirts, and gym gear before they sell out!</p>
 
-    <footer class="footer">
-        <div class="promo-section">
-            <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Merchandise">
-            <h2>Shop the Cowboy Iron Gym Collection</h2>
-            <p>Check out our exclusive merch collection! Supplies are limited, so act fast!</p>
-            <a href="merchandise.html">Shop Now</a>
+        <div class="shopify-container">
+            <div id="collection-component"></div>
         </div>
-        <div class="social" style="display: flex; align-items: center; gap: 10px; margin-top: 20px;">
-            <span>Follow us on:</span>
-            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram" style="font-size: 2rem; color: #ff0000; text-decoration: none; transition: color 0.3s;"></a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
         </div>
     </footer>
 
-    <script>
-        fetch('/api/shopify')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                // Handle the data from the API
-            })
-            .catch(error => console.error('Error:', error));
-
-        function toggleModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = (modal.style.display === "block") ? "none" : "block";
-        }
-
-        window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
+    <!-- Shopify Buy Button Script -->
     <script type="text/javascript">
-        /*<![CDATA[*/
         (function () {
             var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
             if (window.ShopifyBuy) {
@@ -210,299 +218,29 @@
                 ShopifyBuy.UI.onReady(client).then(function (ui) {
                     ui.createComponent('collection', {
                         id: '476047606075',
-                        node: document.getElementById('collection-component-1716587404255'),
+                        node: document.getElementById('collection-component'),
                         moneyFormat: '%24%7B%7Bamount%7D%7D',
                         options: {
                             "product": {
-                                "styles": {
-                                    "product": {
-                                        "@media (min-width: 601px)": {
-                                            "max-width": "calc(33.33333% - 30px)",
-                                            "margin-left": "30px",
-                                            "margin-bottom": "50px",
-                                            "width": "calc(33.33333% - 30px)"
-                                        },
-                                        "img": {
-                                            "height": "calc(100% - 15px)",
-                                            "position": "absolute",
-                                            "left": "0",
-                                            "right": "0",
-                                            "top": "0"
-                                        },
-                                        "imgWrapper": {
-                                            "padding-top": "calc(75% + 15px)",
-                                            "position": "relative",
-                                            "height": "0"
-                                        }
-                                    },
-                                    "title": {
-                                        "font-size": "20px",
-                                        "color": "#ff1010"
-                                    },
-                                    "button": {
-                                        "font-family": "Roboto, sans-serif",
-                                        "font-size": "18px",
-                                        "padding-top": "17px",
-                                        "padding-bottom": "17px",
-                                        ":hover": {
-                                            "background-color": "#cf1b23"
-                                        },
-                                        "background-color": "#e61e27",
-                                        ":focus": {
-                                            "background-color": "#cf1b23"
-                                        },
-                                        "border-radius": "25px",
-                                        "padding-left": "36px",
-                                        "padding-right": "36px"
-                                    },
-                                    "quantityInput": {
-                                        "font-size": "18px",
-                                        "padding-top": "17px",
-                                        "padding-bottom": "17px"
-                                    },
-                                    "price": {
-                                        "font-size": "18px",
-                                        "color": "#ff0b0b"
-                                    },
-                                    "compareAt": {
-                                        "font-size": "15.299999999999999px",
-                                        "color": "#ff0b0b"
-                                    },
-                                    "unitPrice": {
-                                        "font-size": "15.299999999999999px",
-                                        "color": "#ff0b0b"
-                                    }
-                                },
                                 "buttonDestination": "modal",
                                 "contents": {
                                     "options": false
                                 },
                                 "text": {
                                     "button": "View product"
-                                },
-                                "googleFonts": [
-                                    "Roboto"
-                                ]
-                            },
-                            "productSet": {
-                                "styles": {
-                                    "products": {
-                                        "@media (min-width: 601px)": {
-                                            "margin-left": "-30px"
-                                        }
-                                    }
                                 }
                             },
-                            "modalProduct": {
-                                "contents": {
-                                    "img": false,
-                                    "imgWithCarousel": true,
-                                    "button": false,
-                                    "buttonWithQuantity": true
-                                },
-                                "styles": {
-                                    "product": {
-                                        "@media (min-width: 601px)": {
-                                            "max-width": "100%",
-                                            "margin-left": "0px",
-                                            "margin-bottom": "0px"
-                                        }
-                                    },
-                                    "button": {
-                                        "font-family": "Roboto, sans-serif",
-                                        "font-size": "18px",
-                                        "padding-top": "17px",
-                                        "padding-bottom": "17px",
-                                        ":hover": {
-                                            "background-color": "#cf1b23"
-                                        },
-                                        "background-color": "#e61e27",
-                                        ":focus": {
-                                            "background-color": "#cf1b23"
-                                        },
-                                        "border-radius": "25px",
-                                        "padding-left": "36px",
-                                        "padding-right": "36px"
-                                    },
-                                    "quantityInput": {
-                                        "font-size": "18px",
-                                        "padding-top": "17px",
-                                        "padding-bottom": "17px"
-                                    },
-                                    "title": {
-                                        "font-family": "Helvetica Neue, sans-serif",
-                                        "font-weight": "bold",
-                                        "font-size": "33px",
-                                        "color": "#4c4c4c"
-                                    },
-                                    "price": {
-                                        "font-family": "Helvetica Neue, sans-serif",
-                                        "font-weight": "normal",
-                                        "font-size": "15px",
-                                        "color": "#4c4c4c"
-                                    },
-                                    "compareAt": {
-                                        "font-family": "Helvetica Neue, sans-serif",
-                                        "font-weight": "normal",
-                                        "font-size": "12.75px",
-                                        "color": "#4c4c4c"
-                                    },
-                                    "unitPrice": {
-                                        "font-family": "Helvetica Neue, sans-serif",
-                                        "font-weight": "normal",
-                                        "font-size": "12.75px",
-                                        "color": "#4c4c4c"
-                                    },
-                                    "description": {
-                                        "font-size": "15px"
-                                    }
-                                },
-                                "googleFonts": [
-                                    "Roboto"
-                                ],
-                                "text": {
-                                    "button": "Add to cart"
-                                }
-                            },
-                            "option": {},
                             "cart": {
-                                "styles": {
-                                    "button": {
-                                        "font-family": "Roboto, sans-serif",
-                                        "font-size": "18px",
-                                        "padding-top": "17px",
-                                        "padding-bottom": "17px",
-                                        ":hover": {
-                                            "background-color": "#cf1b23"
-                                        },
-                                        "background-color": "#e61e27",
-                                        ":focus": {
-                                            "background-color": "#cf1b23"
-                                        },
-                                        "border-radius": "25px"
-                                    },
-                                    "title": {
-                                        "color": "#2e2626"
-                                    },
-                                    "header": {
-                                        "color": "#2e2626"
-                                    },
-                                    "lineItems": {
-                                        "color": "#2e2626"
-                                    },
-                                    "subtotalText": {
-                                        "color": "#2e2626"
-                                    },
-                                    "subtotal": {
-                                        "color": "#2e2626"
-                                    },
-                                    "notice": {
-                                        "color": "#2e2626"
-                                    },
-                                    "currency": {
-                                        "color": "#2e2626"
-                                    },
-                                    "close": {
-                                        "color": "#2e2626",
-                                        ":hover": {
-                                            "color": "#2e2626"
-                                        }
-                                    },
-                                    "empty": {
-                                        "color": "#2e2626"
-                                    },
-                                    "noteDescription": {
-                                        "color": "#2e2626"
-                                    },
-                                    "discountText": {
-                                        "color": "#2e2626"
-                                    },
-                                    "discountIcon": {
-                                        "fill": "#2e2626"
-                                    },
-                                    "discountAmount": {
-                                        "color": "#2e2626"
-                                    },
-                                    "cart": {
-                                        "background-color": "#e6dede"
-                                    },
-                                    "footer": {
-                                        "background-color": "#e6dede"
-                                    }
-                                },
                                 "text": {
                                     "total": "Subtotal",
-                                    "notice": "Shipping is added at checkout.",
                                     "button": "Checkout"
-                                },
-                                "popup": false,
-                                "googleFonts": [
-                                    "Roboto"
-                                ]
-                            },
-                            "toggle": {
-                                "styles": {
-                                    "toggle": {
-                                        "font-family": "Roboto, sans-serif",
-                                        "background-color": "#e61e27",
-                                        ":hover": {
-                                            "background-color": "#cf1b23"
-                                        },
-                                        ":focus": {
-                                            "background-color": "#cf1b23"
-                                        }
-                                    },
-                                    "count": {
-                                        "font-size": "18px"
-                                    }
-                                },
-                                "googleFonts": [
-                                    "Roboto"
-                                ]
-                            },
-                            "lineItem": {
-                                "styles": {
-                                    "variantTitle": {
-                                        "color": "#2e2626"
-                                    },
-                                    "title": {
-                                        "color": "#2e2626"
-                                    },
-                                    "price": {
-                                        "color": "#2e2626"
-                                    },
-                                    "fullPrice": {
-                                        "color": "#2e2626"
-                                    },
-                                    "discount": {
-                                        "color": "#2e2626"
-                                    },
-                                    "discountIcon": {
-                                        "fill": "#2e2626"
-                                    },
-                                    "quantity": {
-                                        "color": "#2e2626"
-                                    },
-                                    "quantityIncrement": {
-                                        "color": "#2e2626",
-                                        "border-color": "#2e2626"
-                                    },
-                                    "quantityDecrement": {
-                                        "color": "#2e2626",
-                                        "border-color": "#2e2626"
-                                    },
-                                    "quantityInput": {
-                                        "color": "#2e2626",
-                                        "border-color": "#2e2626"
-                                    }
                                 }
                             }
-                        },
+                        }
                     });
                 });
             }
         })();
-        /*]]>*/
     </script>
 
 </body>

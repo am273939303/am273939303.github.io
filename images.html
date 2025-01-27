@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cowboy Iron Gym - Gallery</title>
+    <title>Gallery - Cowboy Iron Gym</title>
     <link rel="icon" type="image/x-icon" href="/Images/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>
+        /* General Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(90deg, black, #000000);
-            background-size: 200% 100%;
-            animation: gradientAnimation 10s ease infinite alternate;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
             color: #fff;
         }
 
+        /* Header & Navigation */
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: #111;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+            background: rgba(17, 17, 17, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
-        .header .logo {
-            width: 120px;
-            height: 120px;
+        .logo {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             cursor: pointer;
         }
 
         .navbar {
             display: flex;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .navbar a {
@@ -44,24 +53,73 @@
             text-decoration: none;
             font-weight: bold;
             padding: 10px 15px;
-            transition: background-color 0.3s;
+            transition: 0.3s;
+            font-size: 1rem;
+            white-space: nowrap;
         }
 
-        .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar a.active {
+        .navbar a:hover, .navbar a.active {
             color: #ff0000;
         }
+
+        .menu-toggle {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #111;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 15px 0;
+            }
+
+            .navbar a {
+                padding: 15px;
+                display: block;
+                font-size: 1.2rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar.show {
+                display: flex;
+            }
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 140px 20px 60px;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 3rem;
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+
+        /* Carousel */
         .carousel-container {
             position: relative;
-            width: 90%;
-            max-width: 1200px;
-            margin: 50px auto;
+            max-width: 1000px;
+            margin: auto;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
         }
 
         .carousel {
@@ -71,8 +129,7 @@
 
         .carousel img {
             width: 100%;
-            max-width: 300px;
-            margin: 10px;
+            max-width: 1000px;
             border-radius: 15px;
         }
 
@@ -83,19 +140,16 @@
             transform: translateY(-50%);
             width: 50px;
             height: 50px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             color: #fff;
             font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: none;
             outline: none;
             transition: background-color 0.3s;
         }
 
         .carousel-btn:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
         }
 
         .prev {
@@ -106,30 +160,51 @@
             right: 10px;
         }
 
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .carousel img {
-                max-width: 90%;
-            }
+        /* Grid Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
         }
 
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
+        .gallery-grid img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #111;
+            font-size: 1rem;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social a {
+            font-size: 2rem;
+            color: #ff0000;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            color: #cc0000;
         }
     </style>
 </head>
@@ -141,7 +216,6 @@
             <img src="./Images/logo.jpeg" alt="Cowboy Iron Gym Logo" class="logo">
         </a>
         <nav class="navbar">
-            <a href="index.html">Home</a>
             <a href="memberships.html">Memberships</a>
             <a href="trainers.html">Trainers</a>
             <a href="contact.html">Contact</a>
@@ -151,33 +225,51 @@
         </nav>
     </header>
 
-    <!-- Carousel Section -->
-    <div class="carousel-container">
-        <div class="carousel">
-            <!-- Image paths should be updated with actual URLs -->
-            <img src="Images/GO.JPG" alt="Image 1">
-            <img src="Images/TC.JPG" alt="Image 2">
-            <img src="Images/D.jpg" alt="Image 3">
-            <img src="Images/GYM.jpg" alt="Image 4">
-            <img src="Images/GYM1.jpg" alt="Image 5">
-            <img src="Images/logo1.JPG" alt="Image 6">
-            <img src="Images/TC.JPG" alt="Image 7">
-            <img src="Images/TC1.JPG" alt="Image 8">
-        </div>
-        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
-    </div>
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2>Gallery</h2>
 
-    <!-- JavaScript for Carousel Functionality -->
+        <!-- Image Carousel -->
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="Images/GO.JPG" alt="Image 1">
+                <img src="Images/TC.JPG" alt="Image 2">
+                <img src="Images/D.jpg" alt="Image 3">
+                <img src="Images/GYM.jpg" alt="Image 4">
+                <img src="Images/GYM1.jpg" alt="Image 5">
+                <img src="Images/logo1.JPG" alt="Image 6">
+                <img src="Images/TC.JPG" alt="Image 7">
+                <img src="Images/TC1.JPG" alt="Image 8">
+            </div>
+            <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <!-- Grid Gallery -->
+        <div class="gallery-grid">
+            <img src="Images/GO.JPG" alt="Gym Image">
+            <img src="Images/TC.JPG" alt="Training">
+            <img src="Images/D.jpg" alt="Workout">
+            <img src="Images/GYM.jpg" alt="Equipment">
+            <img src="Images/GYM1.jpg" alt="Interior">
+            <img src="Images/logo1.JPG" alt="Brand">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/cowboyirongym/" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+
     <script>
         let slideIndex = 0;
         const slides = document.querySelectorAll('.carousel img');
         const totalSlides = slides.length;
 
         function showSlide(index) {
-            const carousel = document.querySelector('.carousel');
-            const offset = index * (100 / totalSlides);
-            carousel.style.transform = `translateX(-${offset}%)`;
+            document.querySelector('.carousel').style.transform = `translateX(-${index * 100}%)`;
         }
 
         function prevSlide() {
@@ -189,9 +281,7 @@
             slideIndex = (slideIndex < totalSlides - 1) ? slideIndex + 1 : 0;
             showSlide(slideIndex);
         }
-
-        // Show the first slide initially
-        showSlide(slideIndex);
     </script>
+
 </body>
 </html>
